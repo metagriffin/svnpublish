@@ -72,7 +72,7 @@ classifiers = [
 setup(
   name                  = 'svnpublish',
   version               = read('VERSION.txt', default='0.0.1').strip(),
-  description           = 'Enables powerful automation from a subversion repository',
+  description           = 'Enables powerful automation from a subversion repository.',
   long_description      = read('README.rst'),
   classifiers           = classifiers,
   author                = 'metagriffin',
