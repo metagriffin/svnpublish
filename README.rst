@@ -2,9 +2,9 @@
 Automated Publishing for Subversion
 ===================================
 
-Welcome to **svnpublish**, a tool to enable automated publishing and
-any other arbitrary commands to be executed when updates are made to a
-subversion version control repository.
+Welcome to **svnpublish**, a tool to enable automated publishing (and
+any other arbitrary commands to be executed) when updates are made to
+a subversion version control repository.
 
 Publishing configurations are tied to either the entire repository or
 restricted to subdirectories, referred to as a ``publishing point`` in
