@@ -1,0 +1,263 @@
+###############################################################################
+######################   SVNPUBLISH CONFIGURATION FILE   ######################
+###############################################################################
+
+#------------------------------------------------------------------------------
+# The svnpublish configuration is a set of options in YAML format
+# (please see http://www.yaml.org/ for documentation on the YAML
+# syntax). The options listed below are the default options, but
+# commented out. To change a value, simply un-comment it (by removing
+# the initial '#') and set the value after the colon (':') to the
+# desired value.
+#------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# For any types that are marked as being "resolved-dict", this means
+# that the dict is specially processed: the dict's values (and all
+# sub- values of list- and dict- type values) are walked depth-first
+# in search of any dict with the special key 'class'. Any such dicts
+# found are in-place replaced with an instantiated object by calling
+# the specified 'class' (which is dot-resolved) constructor (or
+# function) taking all the other key/value pairs in the dict as
+# keyword arguments to the constructor or function.
+#------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# The ``admin`` option specifies the default administrator email
+# address or addresses.
+
+# Type: list(str)
+# Example: ['admin@example.com']
+# Default:
+
+admin: [ 'root@localhost' ]
+
+#------------------------------------------------------------------------------
+# When ``dryrun`` is enabled, svnpublish doesn't actually do anything,
+# it just states what would have been done.
+
+# Type: bool
+# Example: true
+# Default:
+
+dryrun: false
+
+#------------------------------------------------------------------------------
+# The ``label`` is the short identification label for this repository.
+
+# Type: str
+# Example: 'Repos'
+# Default:
+
+label: null
+
+#------------------------------------------------------------------------------
+# The ``name`` is the longer display name for this repository.
+
+# Type: str
+# Example: 'My Repository'
+# Default:
+
+name: null
+
+#------------------------------------------------------------------------------
+# The ``reposUrl`` is the externally accessible repository URL used by
+# some of the engines to provide access to repository entries. It
+# should not include a trailing slash.
+
+# Type: str
+# Example: 'http://svn.example.com/svnroot'
+# Default:
+
+reposUrl: null
+
+#------------------------------------------------------------------------------
+# The ``configOrder`` specifies the acceptable sources of publishing
+# point configurations and are listed in decreasing order of
+# precedence.
+
+# Type: list(str)
+# Default:
+
+configOrder: [ 'svn', 'fs' ]
+
+#------------------------------------------------------------------------------
+# The ``configDir`` specifies the root of the "fs" config sources.
+
+# Type: str
+# Example: '/etc/svnpublish/myrepos/config'
+# Default:
+
+configDir: '.'
+
+#------------------------------------------------------------------------------
+# The ``configPath`` specifies the publishing point configuration
+# path, relative to the publishing point. For "svn" config sources,
+# this means relative to the actual publishing point content, for "fs"
+# config sources, this means relative to configDir + publishing point
+# + configPath.
+
+# Type: str
+# Default:
+
+configPath: '+publish/conf.yaml'
+
+#------------------------------------------------------------------------------
+# The ``overrideConfig`` overrides every publishing point
+# configuration for publishing points that would otherwise have been
+# published, i.e.  this will not affect directories that are not
+# configured to be publishing points, unless ``publishOnly`` is also
+# set.
+
+# Type: str
+# Example: '/path/to/conf.yaml'
+# Default:
+
+overrideConfig: null
+
+#------------------------------------------------------------------------------
+# The ``publishOnly`` option restricts the set of publishing points
+# that actually get published to those that match at least one of the
+# specified regular expressions --- all others are skipped. Note that
+# the listed publishing points are only published if they actually had
+# changes. If ``overrideConfig`` is set, then publishing points that
+# match will be published even if they did not have a configuration.
+
+# Type: list(regex)
+# Example: [ 'path/to/point1', '(.*/)?website/.*/htdocs' ]
+# Default:
+
+publishOnly: []
+
+#------------------------------------------------------------------------------
+# The ``templatealchemy`` option configures the TemplateAlchemy
+# sources used by the various sub systems to render data. The
+# ``registry`` option must specify a set of key-value pairs, where the
+# key represents the name of the applicable registry of templates, and
+# the value is a dictionary of settings to apply to that template
+# registry. The following registries are known to exist (however there
+# may be more if other svnpublish plugins are installed):
+#   * framework
+#   * engine-email
+#   * engine-rss
+# The special registry ``default`` is used for any registry that is
+# not explicitly defined.
+# See the TemplateAlchemy documentation for how to configure template
+# sources at https://pypi.python.org/pypi/TemplateAlchemy.
+
+# Type: dict
+# Default:
+
+templatealchemy:
+  registry:
+    default:
+      source:   'pkg:svnpublish:res'
+      renderer: 'mako'
+      extmap:   '{html: mako}'
+    framework:
+      source:   'pkg:svnpublish:res/framework'
+      renderer: 'mako'
+      extmap:   '{html: mako}'
+    engine-rss:
+      source:   'pkg:svnpublish:res/engine-rss'
+      renderer: 'mako'
+      extmap:   '{html: mako, xml: mako}'
+    engine-email:
+      source:   'pkg:svnpublish:res/engine-email'
+      renderer: 'mako'
+      extmap:   '{html: mako}'
+
+#------------------------------------------------------------------------------
+# The ``genemail`` option configures the `genemail` package, which
+# provides emailing functionality to svnpublish. The default
+# configuration simply uses the localhost SMTP server (on port 25) to
+# send out email. See genemail's documentation at
+# https://pypi.python.org/pypi/genemail for more configuration
+# details.
+
+# Type: resolved-dict
+# Example:
+#   # this sender will authenticate to the SMTP server, add a BCC to
+#   # each email, and GPG and DKIM sign all outbound emails (note that
+#   # the GPG signing is currently not provided by genemail).
+#   genemail:
+#     class: 'genemail.Manager'
+#     sender:
+#       class:    'genemail.SmtpSender'
+#       host:     'smtp.example.com'
+#       port:     587
+#       ssl:      true
+#       starttls: false
+#       username: 'example'
+#       password: 's3cr3t'
+#     default:
+#       headers:
+#         from:   'noreply@example.com'
+#     modifier:
+#       class:    'genemail.ChainingModifier'
+#       modifiers:
+#         - class: 'genemail.BccModifier'
+#           bcc:   'admin@example.com'
+#         - class:   'mypackage.email.GpgModifier'
+#           keydir:  '/path/to/gpg/keys'
+#           sign:    true
+#           encrypt: false
+#         - class: 'genemail.DkimModifier'
+#           privateKey: |
+#             -----BEGIN RSA PRIVATE KEY-----
+#             MIIBOgIBAAJBAM3tYc678cHyJdmBCoQyqIHv9+eCksiAvc19zNlaDMkVKtk2/yae
+#             8LLSAyf4B4CG1c18HyAv0lS6UeGDzLqk5bMCAwEAAQJAMLp/boAi0RYPxsw2RNoH
+#             7ddu/iVzvmZYg4vFMZmRdPNUaDgJSuPGR1CawTeXwTP+IZuMQHLVDEiVN7g4KSIp
+#             oQIhAPYEF/OWK93cEqGW9fdHlvMwRLekuVciXkypoSESKpZvAiEA1kjMnT7AkvPz
+#             k7gw/rYRo0O3q7EYOylrHde4rVpCZv0CIFp10uDMnUCtBWTJf5P3jPfLDdmBBm2V
+#             w5ro3MiuR16dAiEAp5SVWKA70HEyW6MfxgMzdgA+gupjrdjtaZBMYF4HMi0CIDcs
+#             ZZ1QMmhqF106XrQeSToj+xD2C8INmZh5HyzQJi6h
+#             -----END RSA PRIVATE KEY-----
+#           domain:   'example.com'
+#           selector: '20130731v1'
+# Default:
+
+genemail:
+  class: 'genemail.Manager'
+  sender:
+    class: 'genemail.SmtpSender'
+  default:
+    headers:
+      from: '"svnpublish" <noreply@localhost>'
+  provider:
+    class:    'templatealchemy.Manager'
+    source:   'pkg:svnpublish:res'
+    renderer: 'mako'
+    extmap:   {html: mako}
+
+#------------------------------------------------------------------------------
+# The ``engines`` option specifies attributes for the various
+# svnpublish engines. The option is a key/value map where the key is
+# the name of the engine, and the value another dict of sections to
+# option name/value.  The sections can be one of 'defaults',
+# 'overrides', or 'extends'. The "defaults" section specifies default
+# options, that can be overriden by each publish point. The
+# "overrides" section specifies options that cannot be overriden by a
+# publishing point. The "extends" section specifies default options
+# that are merged with each publishing point options. Note that not
+# all options can be "merged" and will default to behave as if
+# specified in the "overrides" section. The special "all" engine
+# options are applied to all engines, but engine-specific options take
+# precedence. See the engine-specific documentation for available
+# options.
+
+# Type: dict
+# Example:
+#   engines:
+#     email:
+#       defaults:
+#         mailfrom: noreply@svn.example.com
+#       extends:
+#         recipients: [ 'admin@example.com' ]
+# Default:
+
+engines: null
+
+#------------------------------------------------------------------------------
+# end of $Id$
+#------------------------------------------------------------------------------

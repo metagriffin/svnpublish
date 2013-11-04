@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 7
+svnuser
+K 8
+svn:date
+V 27
+2011-05-26T04:10:16.815579Z
+K 7
+svn:log
+V 32
+added a genshi-compile test file
+END

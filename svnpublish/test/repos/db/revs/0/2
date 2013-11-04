@@ -1,0 +1,29 @@
+id: 0-1.0-2.r2/0
+type: dir
+pred: 0-1.0.r1/971
+count: 1
+text: 1 877 81 81 06daeb7e145b4a3896a4942373ef4a3d
+cpath: /content
+copyfrom: 1 /project
+
+PLAIN
+K 7
+content
+V 16
+dir 0-1.0-2.r2/0
+END
+ENDREP
+id: 0.0.r2/195
+type: dir
+pred: 0.0.r1/1140
+count: 2
+text: 2 144 38 38 182778d1c852549f5e60e94bb7e85896
+cpath: /
+copyroot: 0 /
+
+0-1.0.r1/971 delete-dir false false /project
+
+0-1._0.t1-1 add-dir false false /content
+1 /project
+
+195 322

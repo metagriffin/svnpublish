@@ -1,0 +1,34 @@
+div.clamp {background:#fff;}
+div.clamp,
+div.clamp th,
+div.clamp td {font:10pt "Trebuchet MS",lucida,geneva,verdana,sans-serif;}
+pre {font-family:"Lucida Console",Consolas,"Andale Mono","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace;}
+div.clampHead table.border {width:100%;}
+div.clampHead table.border > tr.t,
+div.clampHead table.border > tr.b {height:4px;background:#666;}
+div.clampHead table.border > tr.c > td.l,
+div.clampHead table.border > tr.c > td.r {width:4px;background:#666;}
+div.clampHead table.outer {width:100%;}
+div.clampHead table.outer > tr > td {background:#ddd;}
+div.clampHead .ol {background:#666;color:#fff;font-variant:small-caps;width:0px;}
+div.clampHead .ll,
+div.clampHead .lr {background:#666;color:#fff;font-variant:small-caps;width:10px;}
+div.clampHead .il,
+div.clampHead .ir {width:10px;background:#ddd;}
+div.clampHead .info {background:#ddd;}
+div.clampHead .label {font-weight:bold;font-size:120%;background:#666;color:#fff;font-variant:small-caps;}
+div.clampHead .info span {color:#333;}
+div.clampBody {font-size:10pt;}
+table.section {width:100%;}
+table.section > tr.head > td {padding-top:1em;}
+table.section > tr.head table {background:#aaa;border:1px solid black;border-bottom-style:none;}
+table.section table.inner td.l,
+table.section table.inner td.r {width:10px;}
+table.section > tr.head table.inner td {font-weight:bold;font-variant:small-caps;}
+table.section > tr.body > td {border-top:1px solid black;border-bottom:1px solid black;background:#ddd;padding-top:0.5em;padding-bottom:0.4em;}
+pre {margin:0px;border:0px;padding:0px;}
+pre.snip {font-style:italic;color:#f00;}
+pre.logmsg {max-height:15.7em;overflow:hidden;}
+pre.logmsg.none {font-style:italic;}
+table.section.changes table.inner table.hasroot {padding-top:0.5em;}
+table.section.changes table.inner table tr.change th {font-weight:bold;}
