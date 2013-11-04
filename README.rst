@@ -22,7 +22,8 @@ Install:
   $ mkdir -p /etc/svnpublish
   $ svnpublish --init-options > /etc/svnpublish/myrepos.yaml
 
-Configure svnpublish by editing ``/etc/svnpublish/myrepos.yaml``.
+  # edit the configuration file
+  $ vi /etc/svnpublish/myrepos.yaml
 
 Put in your ``REPOSITORY/hooks/post-commit``:
 
