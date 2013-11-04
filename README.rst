@@ -1,8 +1,8 @@
-==========
-svnpublish
-==========
+===================================
+Automated Publishing for Subversion
+===================================
 
-Welcome to ``svnpublish``, a tool to enable automated publishing and
+Welcome to **svnpublish**, a tool to enable automated publishing and
 any other arbitrary commands to be executed when updates are made to a
 subversion version control repository.
 
@@ -49,8 +49,9 @@ Global Configuration
 
 The best way to set the initial svnpublish options is to use the
 ``--init-options`` flag, which outputs a list of all available options
-accompanied with documentation. We recommend creating a per-repository
-configuration in ``/etc/svnpublish`` which can be done as follows:
+accompanied with documentation. The recommended approach is to create
+a per-repository configuration in ``/etc/svnpublish/`` which can be
+done as follows:
 
 .. code-block:: bash
 
@@ -70,6 +71,8 @@ following options should be set:
 
 Publishing Point Configuration
 ==============================
+
+TODO: add docs
 
 .. code-block:: yaml
 
