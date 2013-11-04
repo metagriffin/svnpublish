@@ -1,0 +1,101 @@
+* move to use six
+
+* fully apply svnpublish.i18n's "_" everywhere...
+
+* in all svnpublish/engine/test_* that use dryrun, or tmpdirs, switch to FSO!
+
+* for engine 'params':
+    --> move to 'context' instead of 'params' (nomenclature change only)
+    --> enforce "un-overrideable" parameters
+    --> perhaps push engine configs into separate key?
+        ==> eg: params:
+                  svnpub: ...
+                  name: ...
+                  label: ...
+                  engine:
+                    name: ... (copy it over for defaulting)
+                    label: ... (same)
+                    etc.
+        ==> or is it sufficient to force them to go through params.svnpub.options
+            to discover non-engine configs?...
+        ==> perhaps offer both?
+              context.svnpub.options.OPTION   : global option
+              context.pubpoint.options.OPTION : publish-point-specific option
+              context.options.OPTION          : engine-specific option
+              context.OPTION                  : shortcut option
+
+* svnpublish's "-p" and "-m" options are useless... i need an option that
+  says "this publishing point should use this config... NOW."
+
+* create asynchronous mode!...
+
+* add check to ensure that all of the required options are set.
+
+-------------------------------------------------------------------------------
+with override-options.yaml:
+    admin: ['mg.test@uberdev.org']
+
+and override-config.yaml:
+    publish:
+      - engine: echo
+      - engine: email
+        mailfrom: noreply@uberdev.org
+        recipients: mg.test@uberdev.org
+
+with the command:
+    svnpublish -vvvvv -o override-options.yaml -c override-config.yaml svnpublish/test/repos 6 -p app
+
+i get the following error (and no email to admins):
+    [--] INFO    |svnpublish.framework: processing publishing point "app", engine "email"
+    [--] INFO    |svnpublish.framework: loading engine "email" (callable: svnpublish.engine.email.publish_email)
+    [  ] DEBUG   |svnpublish.email: using framework email manager template "engine-email/truncated"
+    [**] ERROR   |svnpublish.framework: error exceptions.AttributeError occurred (details at end)
+    [**] ERROR   |svnpublish.framework: ======================================================================
+    [**] ERROR   |svnpublish.framework: svnpublish failed with a total of 1 error(s)
+    [**] ERROR   |svnpublish.framework: publishing point "app" failed:
+    [**] ERROR   |svnpublish.framework:   error 1/1, file "pkg_svnpublish_res_engine_email_truncated", line 33, in render_body:
+    [**] ERROR   |svnpublish.framework:     exceptions.AttributeError: 'NoneType' object has no attribute 'upper'
+    [**] ERROR   |svnpublish.framework:     Traceback (most recent call last):
+    [**] ERROR   |svnpublish.framework:       File "/home/projects/uberdev/svnpublish.git/svnpublish/framework.py", line 163, in run
+    [**] ERROR   |svnpublish.framework:         self.execPublishingPointEngine(pubpnt, engine)
+    [**] ERROR   |svnpublish.framework:       File "/home/projects/uberdev/svnpublish.git/svnpublish/framework.py", line 271, in execPublishingPointEngine
+    [**] ERROR   |svnpublish.framework:         handler(context)
+    [**] ERROR   |svnpublish.framework:       File "/home/projects/uberdev/svnpublish.git/svnpublish/engine/email.py", line 65, in publish_email
+    [**] ERROR   |svnpublish.framework:         eml.send(mailfrom=mailfrom, recipients=rcpts)
+    [**] ERROR   |svnpublish.framework:       File "/home/projects/uberdev/svnpublish.git/.virtualenv/local/lib/python2.7/site-packages/genemail/email.py", line 605, in send
+    [**] ERROR   |svnpublish.framework:         hdrs = self.getOutputHeaders()
+    [**] ERROR   |svnpublish.framework:       File "/home/projects/uberdev/svnpublish.git/.virtualenv/local/lib/python2.7/site-packages/genemail/email.py", line 379, in getOutputHeaders
+    [**] ERROR   |svnpublish.framework:         curheaders.update(self.getTemplateHeaders())
+    [**] ERROR   |svnpublish.framework:       File "/home/projects/uberdev/svnpublish.git/.virtualenv/local/lib/python2.7/site-packages/genemail/email.py", line 196, in getTemplateHeaders
+    [**] ERROR   |svnpublish.framework:         xdoc = self.getTemplateXml()
+    [**] ERROR   |svnpublish.framework:       File "/home/projects/uberdev/svnpublish.git/.virtualenv/local/lib/python2.7/site-packages/genemail/email.py", line 181, in getTemplateXml
+    [**] ERROR   |svnpublish.framework:         return util.parseXml(self.template.render(fmt, self.params))
+    [**] ERROR   |svnpublish.framework:       File "/home/projects/uberdev/svnpublish.git/templatealchemy/engine.py", line 166, in render
+    [**] ERROR   |svnpublish.framework:         params or dict())
+    [**] ERROR   |svnpublish.framework:       File "/home/projects/uberdev/svnpublish.git/templatealchemy_driver/mako.py", line 52, in render
+    [**] ERROR   |svnpublish.framework:         ).render(**params)
+    [**] ERROR   |svnpublish.framework:       File "/home/projects/uberdev/svnpublish.git/.virtualenv/local/lib/python2.7/site-packages/mako/template.py", line 443, in render
+    [**] ERROR   |svnpublish.framework:         return runtime._render(self, self.callable_, args, data)
+    [**] ERROR   |svnpublish.framework:       File "/home/projects/uberdev/svnpublish.git/.virtualenv/local/lib/python2.7/site-packages/mako/runtime.py", line 807, in _render
+    [**] ERROR   |svnpublish.framework:         **_kwargs_for_callable(callable_, data))
+    [**] ERROR   |svnpublish.framework:       File "/home/projects/uberdev/svnpublish.git/.virtualenv/local/lib/python2.7/site-packages/mako/runtime.py", line 839, in _render_context
+    [**] ERROR   |svnpublish.framework:         _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+    [**] ERROR   |svnpublish.framework:       File "/home/projects/uberdev/svnpublish.git/.virtualenv/local/lib/python2.7/site-packages/mako/runtime.py", line 865, in _exec_template
+    [**] ERROR   |svnpublish.framework:         callable_(context, *args, **kwargs)
+    [**] ERROR   |svnpublish.framework:       File "pkg_svnpublish_res_engine_email_truncated", line 33, in render_body
+
+
+-------------------------------------------------------------------------------
+
+add 'label: testlabel' to override-options.yaml... then:
+
+with the command:
+    svnpublish -vvvvv -o override-options.yaml -c override-config.yaml svnpublish/test/repos 6 -p app
+
+it ends with:
+    [--] INFO    |svnpublish.framework: processing publishing point "app", engine "email"
+    [--] INFO    |svnpublish.framework: loading engine "email" (callable: svnpublish.engine.email.publish_email)
+    [  ] DEBUG   |svnpublish.email: using framework email manager template "engine-email/truncated"
+
+but no actual email... there should at least be an error!
+
