@@ -90,24 +90,28 @@ Example:
 
   publish:
 
+    # send an email notification
     - engine:       email
       mailfrom:     noreply@example.com
       recipients:
                     - user1@example.com
                     - user2@example.com
 
+    # update an RSS (atom) feed
     - engine:       rss
       window:       50
       label:        Repository Feed
       output:       /var/www/rss/output.xml
       feedUrl:      https://svn.example.com/rss/output.xml
 
+    # export the repository to the file system
     - engine:       export
       path:         /var/www/example.com
       fixate:
                     - { engine: fingerprint }
                     - { engine: fingerprint, path: htdocs/fingerprint }
 
+    # export the repository to a remote host
     - engine:       export
       remote:       svnpublish@example.com
       keychain:     /home/svnpublish/.keychain
