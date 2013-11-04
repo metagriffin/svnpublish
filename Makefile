@@ -10,3 +10,6 @@ cheesecake:
 clean:
 	find svnpublish -iname '*.pyc' -exec rm -f {} \;
 
+tag:
+	git tag -a "v`cat VERSION.txt`" -m "released v`cat VERSION.txt`"
+
