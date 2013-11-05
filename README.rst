@@ -11,6 +11,13 @@ restricted to subdirectories, referred to as a ``publishing point`` in
 svnpublish-speak.
 
 
+Project
+=======
+
+* Homepage: https://github.com/metagriffin/svnpublish
+* Bugs: https://github.com/metagriffin/svnpublish/issues
+
+
 TL;DR
 =====
 
@@ -119,3 +126,22 @@ Example:
       fixate:
                     - { engine: fingerprint }
                     - { engine: fingerprint, path: htdocs/fingerprint }
+
+
+Signed or Encrypted Email
+=========================
+
+- create a directory
+    mkdir -p /path/to/gpghome
+    chmod 700 /path/to/gpghome
+
+- for signing, you need a key. generate one:
+    gpg --homedir /path/to/gpghome --gen-key
+
+- for encrypting, you need to add the public key of every recipient. do so:
+    gpg --homedir /path/to/gpghome --gen-key
+
+- configure genemail to use the ``svnpublish.email.GpgModifier``:
+
+    TODO ...
+
