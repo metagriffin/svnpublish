@@ -2,6 +2,12 @@
 ChangeLog
 =========
 
+2.0.3
+=====
+
+* Added outbound GPG email encryption support
+* Corrected packaging (added missing "res" and "test" files)
+
 2.0.0
 =====
 
