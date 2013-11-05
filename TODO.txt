@@ -1,3 +1,7 @@
+* figure out why setting 'zip_ok=false' (in setup.cfg) and 'zip_safe=False'
+  (in setup.py) makes pkg_resources.resource_listdir('svnpublish', 'res')
+  not work...
+
 * add some ability for the framework/error email to not use gpg IFF there was an issue
   sending it encrypted...
   ==> perhaps move to use per-config genemail modifiers?

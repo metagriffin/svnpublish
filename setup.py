@@ -84,7 +84,7 @@ setup(
   platforms             = ['any'],
   namespace_packages    = ['svnpublish'],
   include_package_data  = True,
-  zip_safe              = False,
+  zip_safe              = True,
   install_requires      = dependencies,
   extras_require        = extras_dependencies,
   tests_require         = test_dependencies,
