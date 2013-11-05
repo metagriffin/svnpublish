@@ -10,6 +10,11 @@ Publishing configurations are tied to either the entire repository or
 restricted to subdirectories, referred to as a ``publishing point`` in
 svnpublish-speak.
 
+.. warning::
+
+  For installation, use ``easy_install``, not ``pip``! The latter is
+  currently breaking pkg_resources' ability to load resources.
+
 
 Project
 =======
@@ -25,7 +30,7 @@ Install:
 
 .. code-block:: bash
 
-  $ pip install svnpublish
+  $ easy_install svnpublish
   $ mkdir -p /etc/svnpublish
   $ svnpublish --init-options > /etc/svnpublish/myrepos.yaml
 

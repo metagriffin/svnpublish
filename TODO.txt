@@ -2,6 +2,8 @@
   (in setup.py) makes pkg_resources.resource_listdir('svnpublish', 'res')
   not work...
 
+  ==> it's a pip problem. if easy_install is used, then it's not an issue.
+
 * add some ability for the framework/error email to not use gpg IFF there was an issue
   sending it encrypted...
   ==> perhaps move to use per-config genemail modifiers?
