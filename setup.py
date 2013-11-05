@@ -39,9 +39,10 @@ dependencies = [
   ]
 
 extras_dependencies = {
-  'genshic': 'genshi    >= 0.6',
-  ## 'jinja2c': 'jinja2    >= 2.7.1',
-  ## 'chameleonc': 'chameleon >= 2.12',
+  'genshic'             : 'genshi       >= 0.6',
+  'gpgemail'            : 'gnupg        >= 1.2.3',
+  ## 'jinja2c'             : 'jinja2       >= 2.7.1',
+  ## 'chameleonc'          : 'chameleon    >= 2.12',
   }
 
 entrypoints = {

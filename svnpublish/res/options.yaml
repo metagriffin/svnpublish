@@ -179,7 +179,8 @@ templatealchemy:
 # Example:
 #   # this sender will authenticate to the SMTP server, add a BCC to
 #   # each email, and GPG and DKIM sign all outbound emails (note that
-#   # the GPG signing is currently not provided by genemail).
+#   # the GPG signing is currently not provided by genemail). Note that
+#   # the order of modifiers is significant!
 #   genemail:
 #     class: 'genemail.Manager'
 #     sender:
@@ -198,10 +199,22 @@ templatealchemy:
 #       modifiers:
 #         - class: 'genemail.BccModifier'
 #           bcc:   'admin@example.com'
-#         - class:   'mypackage.email.GpgModifier'
-#           keydir:  '/path/to/gpg/keys'
-#           sign:    true
-#           encrypt: false
+#         - class:   'mypackage.email.EncryptModifier'
+#           # if set, `sign` is the GPG key to use to sign outbound emails.
+#           # in this case, either the passphrase must be empty, or you must
+#           # be using a gpg-agent (default is null, which disables signing).
+#           sign:    'noreply@example.com'
+#           # if `prune` is true, then any recipient that does not have a
+#           # public key will be silently removed (default is true).
+#           prune:   true
+#           gpg_options:
+#             gnupghome: '/path/to/gpg/directory'
+#             use_agent: false
+#             # gpgbinary: ...
+#             # verbose: ...
+#             # keyring: ...
+#             # options: ...
+#             # secret_keyring: ...
 #         - class: 'genemail.DkimModifier'
 #           privateKey: |
 #             -----BEGIN RSA PRIVATE KEY-----

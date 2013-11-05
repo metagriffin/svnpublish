@@ -1,3 +1,13 @@
+* add some ability for the framework/error email to not use gpg IFF there was an issue
+  sending it encrypted...
+  ==> perhaps move to use per-config genemail modifiers?
+
+* add engines:
+  * jinja2c
+  * chameleonc
+  ==> perhaps convert this to a generalized "page compiler" engine
+      which uses TA?...
+
 * move to use six
 
 * fully apply svnpublish.i18n's "_" everywhere...
@@ -30,6 +40,11 @@
 * create asynchronous mode!...
 
 * add check to ensure that all of the required options are set.
+
+* see if there is anything here that would be good to add:
+    http://sites.inka.de/tesla/gpgrelay.html
+
+* add a unit test for GpgDriver (this is going to be tough...)
 
 -------------------------------------------------------------------------------
 with override-options.yaml:
