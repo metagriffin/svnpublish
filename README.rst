@@ -128,20 +128,48 @@ Example:
                     - { engine: fingerprint, path: htdocs/fingerprint }
 
 
-Signed or Encrypted Email
-=========================
+Encrypted Email
+===============
 
-- create a directory
-    mkdir -p /path/to/gpghome
-    chmod 700 /path/to/gpghome
+SvnPublish can be configured to send PGP-encrypted email, which
+protects the contents of the emails from being read by unintended
+recipients. This is accomplished by using genemail's "Modifier"
+facility and using GPG to do the actual encryption. Steps to get
+it setup:
 
-- for signing, you need a key. generate one:
-    gpg --homedir /path/to/gpghome --gen-key
+1. First, setup the svnpublish account with a GPG home directory. For
+example:
 
-- for encrypting, you need to add the public key of every recipient. do so:
-    gpg --homedir /path/to/gpghome --gen-key
+.. code-block:: bash
 
-- configure genemail to use the ``svnpublish.email.GpgModifier``:
+  # create the directory
+  $ mkdir -p /path/to/gpghome
+  $ chmod 700 /path/to/gpghome
 
-    TODO ...
+  # for signing, svnpublish needs a private key. generate one:
+  $ gpg --homedir /path/to/gpghome --gen-key
 
+  # for encryption, svnpublish needs the public key of every
+  # recipient of encrypted emails:
+  $ gpg --homedir /path/to/gpghome --import /path/to/public.key
+
+
+2. Then, configure genemail (in your svnpublish "options.yaml" file)
+to use the ``svnpublish.email.EncryptModifier``. For example:
+
+.. code-block:: yaml
+
+  # ... other configurations ...
+
+  genemail:
+    modifier:
+      class:   'svnpublish.email.EncryptModifier'
+      sign:    'noreply@example.com'
+      prune:   true
+      gpg_options:
+        gnupghome: '/path/to/gpghome'
+        use_agent: false
+
+
+(See ``svnpublish --init-options`` for details on the various
+options available.)
