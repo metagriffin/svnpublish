@@ -9,6 +9,7 @@ cheesecake:
 
 clean:
 	find svnpublish -iname '*.pyc' -exec rm -f {} \;
+	rm -fr svnpublish.egg-info dist
 
 tag:
 	@echo "[  ] tagging to version `cat VERSION.txt`..."
