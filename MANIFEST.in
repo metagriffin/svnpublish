@@ -1,0 +1,4 @@
+include *.txt *.ini *.cfg *.rst *.json *.yaml
+recursive-include svnpublish *.ico *.png *.gif *.jpg
+recursive-include svnpublish *.less *.css *.js *.html *.pt *.mak *.mako
+recursive-include svnpublish *.json *.yaml *.xml
