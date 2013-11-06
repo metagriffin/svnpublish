@@ -72,6 +72,16 @@ name: null
 reposUrl: null
 
 #------------------------------------------------------------------------------
+# The ``serviceDir`` option specifies the path to the svnpublishd
+# service directory. Note that this is only needed when using the
+# ``--async`` flag.
+
+# Type: str
+# Example: /etc/service/custom-svnpublishd
+
+serviceDir: '/etc/service/svnpublishd'
+
+#------------------------------------------------------------------------------
 # The ``configOrder`` specifies the acceptable sources of publishing
 # point configurations and are listed in decreasing order of
 # precedence.

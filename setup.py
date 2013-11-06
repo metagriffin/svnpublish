@@ -48,6 +48,7 @@ extras_dependencies = {
 entrypoints = {
   'console_scripts': [
     'svnpublish         = svnpublish.cli:main',
+    'svnpublishd        = svnpublish.async:main',
     ],
   }
 

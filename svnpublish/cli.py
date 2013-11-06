@@ -13,7 +13,8 @@ The svnpublish.cli module provides the command line interface to the
 svnpublish engine.
 '''
 
-import sys, os, argparse, six, logging, yaml, traceback, pipes
+import sys, os, argparse, six, logging, yaml, traceback, pipes, pickle
+import time, uuid, subprocess
 from aadict import aadict
 
 from . import framework, api, revinfo, subversion, util
@@ -64,6 +65,13 @@ def main(args=None):
     _('-o'), _('--options'), metavar=_('FILENAME'),
     dest='options', default=None, action='store',
     help=_('main svnpublish options file'))
+
+  cli.add_argument(
+    _('-a'), _('--async'),
+    dest='async', default=False, action='store_true',
+    help=_('run the svnpublish tasks in asynchronous mode; note that'
+           ' svnpublishd must be running and that the "serviceDir"'
+           ' option must be correctly set'))
 
   cli.add_argument(
     _('-y'), _('--options-yaml'), metavar=_('YAML'),
@@ -178,19 +186,6 @@ def main(args=None):
   logger = logging.getLogger('svnpublish')
 
   #----------------------------------------------------------------------------
-  # create the subversion interface
-
-  svnrev = revinfo.RevisionInfo(subversion.Subversion(options.repos), options.rev)
-
-  if options.publish is not None:
-    logger.info('marking entry "%s" as modified' % (options.publish,))
-    svnrev.markUpdated(options.publish)
-
-  if options.modified is not None:
-    logger.info('marking all content in "%s" as modified' % (options.modified,))
-    svnrev.markAllUpdated(options.modified, overlay=True)
-
-  #----------------------------------------------------------------------------
   # setup the svnpublish options
 
   runoptions = aadict.d2ar(yaml.load(framework.defaultOptions))
@@ -210,6 +205,40 @@ def main(args=None):
 
   if options.overrideConfig:
     runoptions.overrideConfig = options.overrideConfig
+
+  #----------------------------------------------------------------------------
+  # check for asynchronous mode
+
+  if options.async and runoptions.serviceDir \
+      and os.environ.get('SVNPUBLISHD_ASYNC') != '0':
+    task = 'task.{rev}.{ts}.{uuid}.pkl'.format(
+      rev=options.rev, ts=int(time.time()), uuid=str(uuid.uuid4()))
+    logger.info('creating asynchronous task: %s', task)
+    fname = os.path.join(runoptions.serviceDir, 'tasks', task)
+    with open(fname, 'wb') as fp:
+      pickle.dump(dict(
+        id  = task,
+        env = dict(os.environ),
+        cwd = os.getcwd(),
+        uid = os.getuid(),
+        gid = os.getgid(),
+        cmd = list(args or sys.argv),
+        ), fp)
+    subprocess.check_call(['sudo', 'svc', '-h', runoptions.serviceDir])
+    return exitcode
+
+  #----------------------------------------------------------------------------
+  # create the subversion interface
+
+  svnrev = revinfo.RevisionInfo(subversion.Subversion(options.repos), options.rev)
+
+  if options.publish is not None:
+    logger.info('marking entry "%s" as modified' % (options.publish,))
+    svnrev.markUpdated(options.publish)
+
+  if options.modified is not None:
+    logger.info('marking all content in "%s" as modified' % (options.modified,))
+    svnrev.markAllUpdated(options.modified, overlay=True)
 
   #----------------------------------------------------------------------------
   # create a special ConfigSource if "--publish" is used...
