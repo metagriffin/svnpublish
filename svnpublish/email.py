@@ -28,13 +28,44 @@ log = logging.getLogger(__name__)
 class EncryptModifier(genemail.Modifier):
 
   #----------------------------------------------------------------------------
-  def __init__(self, prune=True, sign=None, gpg_options=None):
-    self.prune = prune
-    self.sign  = sign
-    self.gpg   = gnupg.GPG(**(gpg_options or dict()))
+  def __init__(self, prune_keys=True, prune_recipients=False,
+               sign=None, add_key='sign-key', gpg_options=None):
+    self.kprune  = prune_keys
+    self.rprune  = prune_recipients
+    self.sign    = sign
+    self.addkeys = add_key
+    if self.addkeys is not None:
+      if asset.isstr(self.addkeys):
+        self.addkeys = [self.addkeys]
+      self.addkeys = list(set(self.addkeys))
+      if 'sign-key' in self.addkeys:
+        self.addkeys.remove('sign-key')
+        if self.sign is not None:
+          self.addkeys.append(self.sign)
+    self.gpg    = gnupg.GPG(**(gpg_options or dict()))
 
   #----------------------------------------------------------------------------
   def modify(self, mailfrom, recipients, data, *other):
+
+    rcptlist = list(set(recipients))
+
+    if self.kprune:
+      keys = self.gpg.list_keys()
+      for rcpt in rcptlist[:]:
+        for key in keys:
+          if rcpt in ','.join(key.get('uids', [])):
+            break
+        else:
+          # TODO: the 'to' in the email should get updated as well...
+          #         ==> from both the original email *AND* the encrypted email
+          rcptlist.remove(rcpt)
+          log.warning('recipient %s removed (not found in keys)', rcpt)
+
+    if self.rprune:
+      recipients = rcptlist[:]
+
+    if self.addkeys:
+      rcptlist = list(set(rcptlist + self.addkeys))
 
     if not asset.isstr(data):
       hdritems = data.items()
@@ -45,20 +76,7 @@ class EncryptModifier(genemail.Modifier):
     else:
       hdritems = email.message_from_string(data).items()
 
-    if self.prune:
-      keys = self.gpg.list_keys()
-      recipients = list(set(recipients))
-      for rcpt in recipients[:]:
-        for key in keys:
-          if rcpt in ','.join(key.get('uids', [])):
-            break
-        else:
-          # TODO: the 'to' in the email should get updated as well...
-          #         ==> from both the original email *AND* the encrypted email
-          recipients.remove(rcpt)
-          log.warning('recipient %s removed (not found in keys)', rcpt)
-
-    data = self.gpg.encrypt(data, recipients, sign=self.sign, always_trust=True)
+    data = self.gpg.encrypt(data, rcptlist, sign=self.sign, always_trust=True)
     if not data.ok:
       raise ValueError('Encryption failed: ' + data.status)
 
