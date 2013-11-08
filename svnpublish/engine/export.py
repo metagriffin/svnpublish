@@ -201,10 +201,11 @@ def run_engines(params, paramkey, engtype, args=None,
         params.logger.debug('engine "%s" does not support dry-run mode - skipping', engine)
         continue
     engine_params = aadict(params).update(engcfg).update({
-      'logger': logging.getLogger('.'.join((params.logger.name, engtype, engine))),
-      'prefix': prefix,
-      'env': engine_env,
-      'evals': evals,
+      'options' : engcfg,
+      'logger'  : logging.getLogger('.'.join((params.logger.name, engtype, engine))),
+      'prefix'  : prefix,
+      'env'     : engine_env,
+      'evals'   : evals,
       })
     handler(engine_params, *args)
 

@@ -27,7 +27,9 @@ def fixate_fingerprint_dryrun(params, srcdir, dstdir):
 
 #------------------------------------------------------------------------------
 def fixate_fingerprint(params, srcdir, dstdir):
-  fppath = os.path.join(srcdir, params.get('path', 'fingerprint'))
+  # todo: this is a hack! fetching from params.options in order to
+  #       avoid inheriting the 'path' from the 'export' engine...
+  fppath = os.path.join(srcdir, params.options.get('path', 'fingerprint'))
   _fingerprint_exec(params, fppath)
 
 #------------------------------------------------------------------------------
