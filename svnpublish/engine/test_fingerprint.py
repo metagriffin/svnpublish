@@ -168,6 +168,40 @@ publish:
       svnrev.svnlook('cat', 'content/textfile.txt'))
     self.assertEqual(fs['/fp.json']['content'], 'rev4.0')
 
+  #----------------------------------------------------------------------------
+  def test_fingerprint_defaultpath(self):
+    svnrev   = revinfo.RevisionInfo(subversion.Subversion(self.svnRepos), '4')
+    tmpdir   = self.tmpdir
+    self.options.configOrder = ['all']
+    self.options.publishOnly = ['content']
+    registerAllConfig('all', '''\
+publish:
+  - engine: export
+    incremental: false
+    path: ''' + tmpdir + '''
+    fixate:
+      - { engine: fingerprint, format: \'rev%(revision)s.0\' }
+''')
+    svnpub = framework.Framework(self.options, svnrev=svnrev)
+    self.log.setLevel(logging.DEBUG)
+    errcnt = svnpub.run()
+    self.assertEqual(errcnt, 0, 'svnpublish did not execute cleanly: ' + self.logput.getvalue())
+    fs = loadFileSystem(self.tmpdir, True)
+    self.assertEqual(
+      sorted([':'.join([e.type, e.path]) for e in fs.values()]),
+      sorted(['dir:/directory',
+              'file:/directory/textfile.txt',
+              'file:/fingerprint',
+              'file:/textfile.txt',
+              ]))
+    self.assertMultiLineEqual(
+      fs['/directory/textfile.txt']['content'],
+      svnrev.svnlook('cat', 'content/directory/textfile.txt'))
+    self.assertMultiLineEqual(
+      fs['/textfile.txt']['content'],
+      svnrev.svnlook('cat', 'content/textfile.txt'))
+    self.assertEqual(fs['/fingerprint']['content'], 'rev4.0')
+
 #------------------------------------------------------------------------------
 # end of $Id$
 #------------------------------------------------------------------------------
