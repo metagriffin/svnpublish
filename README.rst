@@ -60,11 +60,25 @@ If running in asynchronous mode (recommended):
   # (this assumes that "#includedir /etc/sudoers.d" is in "/etc/sudoers.d",
   #  that the user is www-data, and that svc is located in /usr/bin)
   $ echo "www-data ALL = NOPASSWD: /usr/bin/svc -h /etc/service/svnpublishd" > /etc/sudoers.d/svnpublishd
+  $ chmod 440 /etc/sudoers.d/svnpublishd
 
   # start the service
   $ rm -f /etc/service/svnpublishd/down
   $ svc -u /etc/service/svnpublishd
 
+Then add the "--async" option to svnpublish (making sure that the
+`serviceDir` option is set correctly in the svnpublish "options.yaml"
+file). Extending the above example, the new post-commit hook should
+look something like:
+
+.. code-block:: bash
+
+  #!/bin/sh
+  svnpublish --options /etc/svnpublish/myrepos.yaml --async "$@"
+
+NOTE: it is recommended to move the log directory to a more
+system-appropriate location -- see
+``/etc/service/svnpublishd/log/run``.
 
 Overview
 ========
