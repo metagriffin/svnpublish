@@ -2,6 +2,13 @@
 ChangeLog
 =========
 
+2.0.6
+=====
+
+* Added "--init-service" option to svnpublishd
+* Cleaned up default options documentation
+* Moved to genemail-based PGP
+
 
 2.0.5
 =====
