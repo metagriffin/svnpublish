@@ -19,7 +19,7 @@ SvnPublish plugin that generates an atom (new RSS) feed with changes
 to a repository. See http://tools.ietf.org/html/rfc4287.
 '''
 
-import sys, os, traceback, os.path, pickle
+import sys, os, traceback, os.path, pickle, logging
 
 from svnpublish import subversion, revinfo
 from svnpublish.util import evalVars, aadict, tsl

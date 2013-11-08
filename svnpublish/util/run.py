@@ -6,7 +6,7 @@
 # copy: (C) CopyLoose 2013 UberDev <hardcore@uberdev.org>, No Rights Reserved.
 #------------------------------------------------------------------------------
 
-import subprocess
+import subprocess, sys
 
 from svnpublish import api
 from .struct import flattenlist
