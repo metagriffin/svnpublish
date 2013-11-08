@@ -2,12 +2,15 @@
 ChangeLog
 =========
 
-2.0.6
+
+2.0.7
 =====
 
 * Added "--init-service" option to svnpublishd
 * Cleaned up default options documentation
 * Moved to genemail-based PGP
+* Added "--version" command-line display option
+* Fixed export/fingerprint "path" option defaulting bug
 
 
 2.0.5
