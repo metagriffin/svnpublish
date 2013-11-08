@@ -23,7 +23,7 @@ test_dependencies = [
   'nose                 >= 1.3.0',
   'coverage             >= 3.6',
   'fso                  >= 0.1.5',
-  'pxml                 >= 0.2.7',
+  'pxml                 >= 0.2.9',
   ]
 
 dependencies = [
@@ -31,7 +31,7 @@ dependencies = [
   'PyYAML               >= 3.10',
   'six                  >= 1.4.1',
   #'TemplateAlchemy      >= 0.1.20',
-  'genemail             >= 0.1.9',
+  'genemail             >= 0.1.10',
   'lesscpy              >= 0.9j',
   'aadict               >= 0.2.0',
   'globre               >= 0.0.5',
@@ -39,10 +39,10 @@ dependencies = [
   ]
 
 extras_dependencies = {
-  'genshic'             : 'genshi       >= 0.6',
-  'gpgemail'            : 'python-gnupg >= 1.2.3',
-  ## 'jinja2c'             : 'jinja2       >= 2.7.1',
-  ## 'chameleonc'          : 'chameleon    >= 2.12',
+  'genshic'             : 'genshi            >= 0.6',
+  'pgpemail'            : 'genemail[pgp]     >= 1.2.3',
+  ## 'jinja2c'             : 'jinja2            >= 2.7.1',
+  ## 'chameleonc'          : 'chameleon         >= 2.12',
   }
 
 entrypoints = {

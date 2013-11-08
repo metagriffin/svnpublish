@@ -34,7 +34,7 @@ Install:
   $ mkdir -p /etc/svnpublish
   $ svnpublish --init-options > /etc/svnpublish/myrepos.yaml
 
-  # edit the configuration file
+  # edit the self-documenting configuration file:
   $ vi /etc/svnpublish/myrepos.yaml
 
 Put in your ``REPOSITORY/hooks/post-commit``:
@@ -138,29 +138,10 @@ Encrypted Email
 
 SvnPublish can be configured to send PGP-encrypted email, which
 protects the contents of the emails from being read by unintended
-recipients. This is accomplished by using genemail's "Modifier"
-facility and using GPG to do the actual encryption. Steps to get
-it setup:
-
-1. First, setup the svnpublish account with a GPG home directory. For
-example:
-
-.. code-block:: bash
-
-  # create the directory
-  $ mkdir -p /path/to/gpghome
-  $ chmod 700 /path/to/gpghome
-
-  # for signing, svnpublish needs a private key. generate one:
-  $ gpg --homedir /path/to/gpghome --gen-key
-
-  # for encryption, svnpublish needs the public key of every
-  # recipient of encrypted emails:
-  $ gpg --homedir /path/to/gpghome --import /path/to/public.key
-
-
-2. Then, configure genemail (in your svnpublish "options.yaml" file)
-to use the ``svnpublish.email.EncryptModifier``. For example:
+recipients. Follow the instructions in
+https://pypi.python.org/pypi/genemail to setup a GPG-home directory,
+then adjust the svnpublish "options.yaml" file to include the
+PgpModifier. For example:
 
 .. code-block:: yaml
 
@@ -168,12 +149,10 @@ to use the ``svnpublish.email.EncryptModifier``. For example:
 
   genemail:
     modifier:
-      class:   'svnpublish.email.EncryptModifier'
+      class:   'genemail.PgpModifier'
       sign:    'noreply@example.com'
-      prune:   true
       gpg_options:
         gnupghome: '/path/to/gpghome'
-        use_agent: false
 
 
 (See ``svnpublish --init-options`` for details on the various

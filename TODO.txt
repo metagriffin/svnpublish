@@ -52,8 +52,6 @@
 * see if there is anything here that would be good to add:
     http://sites.inka.de/tesla/gpgrelay.html
 
-* add a unit test for GpgDriver (this is going to be tough...)
-
 -------------------------------------------------------------------------------
 with override-options.yaml:
     admin: ['mg.test@uberdev.org']
