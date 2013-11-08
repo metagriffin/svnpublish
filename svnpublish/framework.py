@@ -103,24 +103,6 @@ class Framework(object):
     self.genemail     = autoresolve(options.genemail)
     self.talchemy     = ta.Registry(settings=flatten(options.templatealchemy))
 
-
-
-    # self.email        = emailmanager
-    # self.genshi       = genshi.template.TemplateLoader(asList(self.options.genshiPath),
-    #                                                    auto_reload=True,
-    #                                                    variable_lookup='lenient',
-    #                                                    )
-    # if self.email is None:
-    #   sender = ulib.email.SmtpSender(smtpHost=self.options.smtpHost,
-    #                                  smtpPort=self.options.smtpPort)
-    #   # todo: perhaps create a Provider subclass that can search through
-    #   #      multiple directories?... or open a ticket with ulib to support
-    #   #      basedir as a list?...
-    #   provider = None
-    #   if len(asList(self.options.genshiPath)) > 0:
-    #     provider = ulib.email.GenshiProvider(basedir=asList(self.options.genshiPath)[0])
-    #   self.email = ulib.email.Manager(sender=sender, provider=provider)
-
   #----------------------------------------------------------------------------
   @property
   def version(self):
