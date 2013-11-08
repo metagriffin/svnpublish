@@ -1,3 +1,6 @@
+* clean up the ridiculous *MEGA* cascading of options (eg. export's
+  options spilling into the fixate's options)
+
 * make genshi package optional in engine (ie. in (test_)genshic.py)
 
 * figure out why setting 'zip_ok=false' (in setup.cfg) and 'zip_safe=False'
