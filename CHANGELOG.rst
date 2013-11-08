@@ -3,7 +3,7 @@ ChangeLog
 =========
 
 
-2.0.7
+2.0.8
 =====
 
 * Added "--init-service" option to svnpublishd
