@@ -44,11 +44,26 @@ Put in your ``REPOSITORY/hooks/post-commit``:
   #!/bin/sh
   svnpublish --options /etc/svnpublish/myrepos.yaml "$@"
 
-If running in asynchronous mode:
+If running in asynchronous mode (recommended):
 
 .. code-block:: bash
 
-  TODO: show example of getting svnpublishd running
+  $ apt-get install daemontools-run
+
+  # create the service directory with the user:group that runs svnpublish
+  $ svnpublishd --init-service --service-dir /etc/service/svnpublishd --user www-data:www-data
+
+  # review the output and adjust the service configuration:
+  $ vi /etc/service/svnpublishd/run /etc/service/svnpublishd/log/run
+
+  # grant the user running svnpublish access to HUP the service
+  # (this assumes that "#includedir /etc/sudoers.d" is in "/etc/sudoers.d",
+  #  that the user is www-data, and that svc is located in /usr/bin)
+  $ echo "www-data ALL = NOPASSWD: /usr/bin/svc -h /etc/service/svnpublishd" > /etc/sudoers.d/svnpublishd
+
+  # start the service
+  $ rm -f /etc/service/svnpublishd/down
+  $ svc -u /etc/service/svnpublishd
 
 
 Overview
@@ -155,5 +170,31 @@ PgpModifier. For example:
         gnupghome: '/path/to/gpghome'
 
 
-(See ``svnpublish --init-options`` for details on the various
-options available.)
+Asynchronous Operation
+======================
+
+Svnpublish can run in asynchronous mode (the recommended approach),
+which means that commits happen quickly, and an asynchronous process
+then takes care of executing the publishing. This asynchronous
+process, ``svnpublishd``, has been geared at being run by DJB's
+`daemontools <http://cr.yp.to/daemontools.html>`_. On debian-based
+systems, daemontools can be easily installed with:
+
+.. code-block:: bash
+
+  $ apt-get install daemontools-run
+
+The svnpublishd service directory can be created automatically by a
+call to ``svnpublishd --init-service OPTIONS``, which creates all of
+the directories, "run" scripts, and default logging options necessary
+to run svnpublishd, tailored for the specified user:group that
+svnpublish runs as. It is important to ensure this user:group setting
+is correct, as otherwise svnpublish and svnpublishd cannot
+communicate. The user:group that svnpublish runs as is usually the
+owner of the subversion repository. For example, if your svnpublish
+runs as www-data:www-data, then something like this should work:
+
+.. code-block:: bash
+
+  $ svnpublishd --init-service --service-dir /etc/service/svnpublishd --user www-data:www-data
+
