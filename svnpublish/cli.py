@@ -14,7 +14,7 @@ svnpublish engine.
 '''
 
 import sys, os, argparse, six, logging, yaml, traceback, pipes, pickle
-import time, uuid, subprocess
+import time, uuid, subprocess, pkg_resources
 from aadict import aadict
 
 from . import framework, api, revinfo, subversion, util
@@ -27,6 +27,11 @@ def main(args=None):
   cli = argparse.ArgumentParser(
     description = _('Powerful automation from a subversion repository.'),
     )
+
+  cli.add_argument(
+    _('-V'), _('--version'),
+    dest='version', default=False, action='store_true',
+    help=_('output current svnpublish version and exit'))
 
   cli.add_argument(
     _('--init-options'),
@@ -113,6 +118,10 @@ def main(args=None):
   #------------------------------------------------------------------------------
 
   options = cli.parse_args(args)
+
+  if options.version:
+    print pkg_resources.require('svnpublish')[0].version
+    return 0
 
   if options.initOptions:
     output = framework.defaultOptions.split('\n')

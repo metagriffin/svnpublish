@@ -7,7 +7,7 @@
 #------------------------------------------------------------------------------
 
 import sys, os, argparse, logging, signal, threading, pickle, subprocess
-import pwd, grp
+import pwd, grp, pkg_resources
 from aadict import aadict
 
 from .util import SvnpublishLogFormatter
@@ -161,6 +161,11 @@ def main(args=None):
     )
 
   cli.add_argument(
+    _('-V'), _('--version'),
+    dest='version', default=False, action='store_true',
+    help=_('output current svnpublish version and exit'))
+
+  cli.add_argument(
     _('-l'), _('--log-level'), metavar=_('LEVEL'),
     dest='loglvl', default='warning', action='store',
     help=_('sets the verbosity of the logging subsystem, which is'
@@ -208,6 +213,10 @@ def main(args=None):
            ' values)'))
 
   options = cli.parse_args(args)
+
+  if options.version:
+    print pkg_resources.require('svnpublish')[0].version
+    return 0
 
   # configure the logging
   logger  = logging.getLogger()
