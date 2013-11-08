@@ -7,6 +7,7 @@
 #------------------------------------------------------------------------------
 
 import sys, os, argparse, logging, signal, threading, pickle, subprocess
+import pwd, grp
 from aadict import aadict
 
 from .util import SvnpublishLogFormatter
@@ -98,6 +99,58 @@ class Daemon(object):
     log.debug('done executing task %s', task.id)
 
 #------------------------------------------------------------------------------
+def initServiceDir(options):
+  svcdir    = os.path.abspath(options.svcdir)
+  tskdir    = os.path.join(svcdir, 'tasks')
+  logsvcdir = os.path.join(svcdir, 'log')
+  varlogdir = options.logdir or os.path.join(svcdir, 'log', 'logs')
+  for dname, dpath in (
+    ('service',      svcdir),
+    ('task',         tskdir),
+    ('log service',  logsvcdir),
+    ('log output',   varlogdir),
+    ):
+    if not os.path.exists(dpath):
+      log.info('creating %s directory: "%s"...', dname, dpath)
+      os.makedirs(dpath)
+    if not os.path.isdir(dpath):
+      log.error('%s directory "%s" is not a directory', dname, dpath)
+      return 10
+  runfile = os.path.join(svcdir, 'run')
+  if not os.path.exists(runfile):
+    downfile = os.path.join(svcdir, 'down')
+    log.info('creating "service down" trigger: "%s"...', downfile)
+    with open(downfile, 'wb') as fp:
+      pass
+    log.info('creating service script: "%s"...', runfile)
+    with open(runfile, 'wb') as fp:
+      spd = os.path.abspath(sys.argv[0]) if len(sys.argv) > 0 else ''
+      if not spd.endswith('/svnpublishd'):
+        spd = 'svnpublishd'
+      fp.write('''\
+#!/bin/sh
+exec "{spd}" \\
+  --service-dir "{svcdir}" \\
+  --period 300 \\
+  --log-level info 2>&1
+'''.format(spd=spd, svcdir=svcdir))
+    os.chmod(runfile, 0755)
+  logrunfile = os.path.join(logsvcdir, 'run')
+  if not os.path.exists(logrunfile):
+    log.info('creating log service script: "%s"...', logrunfile)
+    with open(logrunfile, 'wb') as fp:
+      fp.write('''\
+#!/bin/sh
+## the following keeps up to 10MB of timestamped logs
+exec multilog t s1048576 n10 {varlogdir}
+'''.format(varlogdir=varlogdir))
+    os.chmod(logrunfile, 0755)
+  log.info('setting user:group of task directory: "%s"...', tskdir)
+  uid = pwd.getpwnam(options.owner.split(':')[0]).pw_uid
+  gid = grp.getgrnam(options.owner.split(':')[1]).gr_gid
+  os.chown(tskdir, uid, gid)
+
+#------------------------------------------------------------------------------
 def main(args=None):
 
   cli = argparse.ArgumentParser(
@@ -106,7 +159,7 @@ def main(args=None):
 
   cli.add_argument(
     _('-l'), _('--log-level'), metavar=_('LEVEL'),
-    dest='logLevel', default='warning', action='store',
+    dest='loglvl', default='warning', action='store',
     help=_('sets the verbosity of the logging subsystem, which is'
            ' sent to STDERR; it must be an integer or one of the'
            ' "logging" module defined levels such as "debug", "info",'
@@ -114,7 +167,7 @@ def main(args=None):
 
   cli.add_argument(
     _('-d'), _('--service-dir'), metavar=_('DIRECTORY'),
-    dest='svcdir', default=os.getcwd(), action='store',
+    dest='svcdir', default=None, action='store',
     help=_('sets the running directory for the svnpublishd daemon --'
            ' this must match the directory specified in the'
            ' svnpublish "serviceDir" option (default: %(default)s)'))
@@ -128,6 +181,29 @@ def main(args=None):
            ' be notified as soon as a new task is available'
            ' (default: %(default)s)'))
 
+  cli.add_argument(
+    _('--init-service'),
+    dest='initservice', default=False, action='store_true',
+    help=_('initializes the service directory with all the standard'
+           ' directories, scripts, and logging options for the'
+           ' specified "--service-dir" and "--user" options'))
+
+  cli.add_argument(
+    _('--user'), metavar=_('USER:GROUP'),
+    dest='owner', default=None, action='store',
+    help=_('sets the user and group that the svnpublish script'
+           ' will be run as -- this is typically the owner of the'
+           ' subversion repository (only used by "--init-service",'
+           ' and will not overwrite any existing values)'))
+
+  cli.add_argument(
+    _('-L'), _('--log-dir'), metavar=_('DIRECTORY'),
+    dest='logdir', default=None, action='store',
+    help=_('sets the directory that logs will be sent to using'
+           ' daemontools\' "multilog" process (only used by'
+           ' "--init-service", and will not overwrite any existing'
+           ' values)'))
+
   options = cli.parse_args(args)
 
   # configure the logging
@@ -135,10 +211,19 @@ def main(args=None):
   handler = logging.StreamHandler(sys.stdout)
   handler.setFormatter(SvnpublishLogFormatter())
   logger.addHandler(handler)
-  level = options.logLevel
+  level = options.loglvl
   if isinstance(getattr(logging, level.upper()), int):
     level = getattr(logging, level.upper())
   logger.setLevel(int(level))
+
+  if not options.svcdir:
+    return cli.error('option "--service-dir" is required')
+
+  if options.initservice:
+    if not options.owner:
+      return cli.error('"--init-service" requires "--user" to be specified')
+    logger.setLevel(0)
+    return initServiceDir(options)
 
   log.info('svnpublishd initializing (pid=%d, uid=%d)', os.getpid(), os.getuid())
   daemon = Daemon(options.svcdir, period=options.period)
