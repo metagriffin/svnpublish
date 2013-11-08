@@ -188,9 +188,9 @@ templatealchemy:
 # Type: resolved-dict
 # Example:
 #   # this sender will authenticate to the SMTP server, add a BCC to
-#   # each email, and GPG and DKIM sign all outbound emails (note that
-#   # the GPG signing is currently not provided by genemail). Note that
-#   # the order of modifiers is significant!
+#   # each email, PGP encrypt, and finally DKIM sign all outbound emails.
+#   # see https://pypi.python.org/pypi/genemail for the full configuration
+#   # options. Note that the order of modifiers is significant!
 #   genemail:
 #     class: 'genemail.Manager'
 #     sender:
@@ -210,51 +210,19 @@ templatealchemy:
 #         - class: 'genemail.BccModifier'
 #           bcc:   'admin@example.com'
 #
-#         - class:   'mypackage.email.EncryptModifier'
-#
-#           # if set, `sign` is the GPG key to use to sign outbound emails.
-#           # in this case, either the passphrase must be empty, or you must
-#           # be using a gpg-agent (default is null, which disables signing).
+#         - class:   'genemail.PgpModifier'
 #           sign: 'noreply@example.com'
-#
-#           # `add_key` specifies an email address or key ID that
-#           # should be added to the encryption list, but not to the
-#           # recipient list.  this is useful if a global 'backdoor'
-#           # key is needed. It can also be set to 'sign-key' (the
-#           # default) which indicates that the signing key should be
-#           # added (thus the svnpublish sender can decrypt it's
-#           # messages). Set to null to disable any addition. It can
-#           # also be a list of values.
-#           # Example: 'otherkey@example.com'
-#           # Example: null
-#           add_key: 'sign-key'
-#
-#           # if `prune_keys` is true (the default), then the list of
-#           # email addresses for whom the email is encrypted for is
-#           # reduced to the set of recipients that have an exactly
-#           # matching key. if svnpublish prunes too many addresses,
-#           # then this may need to be set to false -- but beware, if
-#           # any address cannot be resolved to a key by gpg, then the
-#           # entire encryption process fails.
-#           prune_keys: true
-#
-#           # if `prune_recipients` is true, then encrypted emails
-#           # will only be sent to the list of addresses that were the
-#           # result of a `prune_keys` pruning. if they are not
-#           # pruned, they will receive emails that they cannot
-#           # read. this is by default false so that it is more
-#           # obvious that some action needs to be taken (i.e. give
-#           # svnpublish the appropriate list of keys).
-#           prune_recipients: false
-#
+#           # add_key: 'sign-key'
+#           # prune_keys: true
+#           # prune_recipients: false
 #           gpg_options:
 #             gnupghome: '/path/to/gpg/directory'
-#             use_agent: false
-#             # gpgbinary: ...
-#             # verbose: ...
-#             # keyring: ...
-#             # options: ...
-#             # secret_keyring: ...
+#             # use_agent: false
+#             # gpgbinary: 'gpg'
+#             # verbose: false
+#             # keyring: null
+#             # options: null
+#             # secret_keyring: null
 #
 #         - class: 'genemail.DkimModifier'
 #           privateKey: |
