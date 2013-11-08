@@ -129,11 +129,14 @@ def initServiceDir(options):
         spd = 'svnpublishd'
       fp.write('''\
 #!/bin/sh
-exec "{spd}" \\
+exec \\
+setuidgid "{uid}" \\
+"{spd}" \\
   --service-dir "{svcdir}" \\
   --period 300 \\
-  --log-level info 2>&1
-'''.format(spd=spd, svcdir=svcdir))
+  --log-level info \\
+2>&1
+'''.format(uid=options.owner.split(':')[0], spd=spd, svcdir=svcdir))
     os.chmod(runfile, 0755)
   logrunfile = os.path.join(logsvcdir, 'run')
   if not os.path.exists(logrunfile):
