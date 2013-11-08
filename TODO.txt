@@ -52,6 +52,10 @@
 * see if there is anything here that would be good to add:
     http://sites.inka.de/tesla/gpgrelay.html
 
+* remove the dependency on daemontools. are there more "linux-like" variants?
+
+* use 'groome' or 'molt' for --init-service?.
+
 -------------------------------------------------------------------------------
 with override-options.yaml:
     admin: ['mg.test@uberdev.org']
