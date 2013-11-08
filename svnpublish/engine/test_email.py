@@ -16,7 +16,7 @@ from svnpublish import framework, subversion, revinfo
 from ..test_helper import TestCase, loadFileSystem, registerAllConfig
 
 #------------------------------------------------------------------------------
-class TestEmail(TestCase, pxml.TestMixin, genemail.testing.EmailTestMixin):
+class TestEmail(TestCase, pxml.XmlTestMixin, genemail.testing.EmailTestMixin):
 
   maxDiff  = None
   svnRepos = 'test/repos'

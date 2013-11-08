@@ -14,7 +14,7 @@ from svnpublish import framework, api, subversion, revinfo
 from ..test_helper import TestCase, registerAllConfig
 
 #------------------------------------------------------------------------------
-class TestRss(TestCase, pxml.TestMixin):
+class TestRss(TestCase, pxml.XmlTestMixin):
 
   maxDiff  = None
   svnRepos = 'test/repos'
