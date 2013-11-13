@@ -178,7 +178,7 @@ def main(args=None):
   cli.add_argument(
     _('-V'), _('--version'),
     dest='version', default=False, action='store_true',
-    help=_('output current svnpublish version and exit'))
+    help=_('output current svnpublishd version and exit'))
 
   cli.add_argument(
     _('-l'), _('--log-level'), metavar=_('LEVEL'),
@@ -252,7 +252,7 @@ def main(args=None):
     logger.setLevel(0)
     return initServiceDir(options)
 
-  log.info('svnpublishd v%s initializing (pid=%d, uid=%d)',
+  log.info('svnpublishd/v%s initializing (pid=%d, uid=%d)',
            framework.version, os.getpid(), os.getuid())
   daemon = Daemon(options.svcdir, period=options.period)
   registerSignalHandlers(daemon)

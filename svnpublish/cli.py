@@ -208,7 +208,7 @@ def main(args=None):
   #----------------------------------------------------------------------------
   # setup the svnpublish options
 
-  logger.info('svnpublish v%s initializing (pid=%d, uid=%d)',
+  logger.info('svnpublish/v%s initializing (pid=%d, uid=%d)',
               framework.version, os.getpid(), os.getuid())
 
   runoptions = aadict.d2ar(yaml.load(framework.defaultOptions))
