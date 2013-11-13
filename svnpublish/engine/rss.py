@@ -1,17 +1,32 @@
 # -*- coding: utf-8 -*-
 #------------------------------------------------------------------------------
 # file: $Id$
-# auth: metagriffin <metagriffin@uberdev.org>
+# auth: metagriffin <mg.github@uberdev.org>
 # date: 2009/09/20
-# copy: (C) CopyLoose 2009 UberDev <hardcore@uberdev.org>, No Rights Reserved.
+# copy: (C) Copyright 2009-EOT metagriffin -- see LICENSE.txt
 #------------------------------------------------------------------------------
-# improve: add support for generating articles that can be back-referenced:
-#          note that i should NOT statically generate them, since that would
-#          be a massive waste of space!...
-# improve: it would be nice if i could override the *styling* of the RSS
-#          article instead of the structure... and on that note, it would be
-#          great if i could define the structure using classes, and then inline
-#          the styling (so that email browsers won't ignore the CSS)...
+# This software is free software: you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This software is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see http://www.gnu.org/licenses/.
+#------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# TODO: add support for generating articles that can be back-referenced:
+#       note that i should NOT statically generate them, since that would
+#       be a massive waste of space!...
+# TODO: it would be nice if i could override the *styling* of the RSS
+#       article instead of the structure... and on that note, it would be
+#       great if i could define the structure using classes, and then inline
+#       the styling (so that email browsers won't ignore the CSS)...
 #------------------------------------------------------------------------------
 
 '''
@@ -23,10 +38,6 @@ import sys, os, traceback, os.path, pickle, logging
 
 from svnpublish import subversion, revinfo
 from svnpublish.util import evalVars, aadict, tsl
-
-# #------------------------------------------------------------------------------
-# defaultFeedTemplate = util.getResourceString('engine-rss-default-feed.gst')
-# defaultItemTemplate = util.getResourceString('engine-rss-default-item.gst')
 
 #------------------------------------------------------------------------------
 def publish_rss_dryrun(params):
