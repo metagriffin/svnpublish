@@ -70,13 +70,14 @@ class Daemon(object):
   def handleTask(self, taskid):
     log.info('handling task: %s', taskid)
     fname = os.path.join(self.taskdir, taskid)
-    dname = os.path.join(self.taskdir, 'work-' + taskid)
+    dname = os.path.join(self.taskdir, 'processing-' + taskid)
     with open(fname, 'rb') as fp:
       task = pickle.load(fp)
     os.rename(fname, dname)
     try:
       self.launchTask(aadict(task))
       os.unlink(dname)
+      log.info('task complete: %s', taskid)
     except Exception:
       log.exception('failed during handling of task %s', taskid)
       # todo: ideally, this would email the admins...
