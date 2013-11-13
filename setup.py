@@ -2,9 +2,22 @@
 # -*- coding: utf-8 -*-
 #------------------------------------------------------------------------------
 # file: $Id$
-# auth: metagriffin <metagriffin@uberdev.org>
+# auth: metagriffin <mg.github@uberdev.org>
 # date: 2010/12/21
-# copy: (C) CopyLoose 2010 UberDev <hardcore@uberdev.org>, No Rights Reserved.
+# copy: (C) Copyright 2013-EOT metagriffin -- see LICENSE.txt
+#------------------------------------------------------------------------------
+# This software is free software: you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This software is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see http://www.gnu.org/licenses/.
 #------------------------------------------------------------------------------
 
 import os, sys, setuptools
@@ -59,7 +72,6 @@ classifiers = [
   'Intended Audience :: Developers',
   'Intended Audience :: Information Technology',
   'Intended Audience :: System Administrators',
-  'License :: Public Domain',
   'Natural Language :: English',
   'Operating System :: OS Independent',
   'Programming Language :: Python',
@@ -69,6 +81,7 @@ classifiers = [
   'Topic :: Software Development :: Libraries :: Python Modules',
   'Topic :: Software Development :: Version Control',
   'Topic :: Utilities',
+  'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
   ]
 
 setup(
@@ -91,7 +104,7 @@ setup(
   tests_require         = test_dependencies,
   test_suite            = 'svnpublish',
   entry_points          = entrypoints,
-  license               = 'MIT (http://opensource.org/licenses/MIT)',
+  license               = 'GPLv3+',
   )
 
 #------------------------------------------------------------------------------
