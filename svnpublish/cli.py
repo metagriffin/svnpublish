@@ -120,7 +120,7 @@ def main(args=None):
   options = cli.parse_args(args)
 
   if options.version:
-    print pkg_resources.require('svnpublish')[0].version
+    print framework.version
     return 0
 
   if options.initOptions:
@@ -196,6 +196,9 @@ def main(args=None):
 
   #----------------------------------------------------------------------------
   # setup the svnpublish options
+
+  logger.info('svnpublish v%s initializing (pid=%d, uid=%d)',
+              framework.version, os.getpid(), os.getuid())
 
   runoptions = aadict.d2ar(yaml.load(framework.defaultOptions))
 

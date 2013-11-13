@@ -3,6 +3,7 @@
 import re
 from svnpublish.reposchange import RepositoryChange
 from svnpublish.util import size2str
+from svnpublish import framework
 %>\
 <!DOCTYPE html>
 <html
@@ -97,6 +98,7 @@ if you take care of these issues! ;-)
     <p>Thank you for using <b>svnpublish</b>!</p>
    </div>
    <div id="ClampFoot">
+    <p>svnpublish v${framework.version}</p>
     <p>[<a href="https://www.github.com/metagriffin/svnpublish/">svnpublish home page</a>]</p>
    </div>
   </div>

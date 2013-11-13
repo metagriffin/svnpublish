@@ -32,3 +32,4 @@ pre.logmsg {max-height:15.7em;overflow:hidden;}
 pre.logmsg.none {font-style:italic;}
 table.section.changes table.inner table.hasroot {padding-top:0.5em;}
 table.section.changes table.inner table tr.change th {font-weight:bold;}
+.credits {margin-top:1em;color:#999;font-size:80%;}

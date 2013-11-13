@@ -7,9 +7,10 @@
 #------------------------------------------------------------------------------
 
 import sys, os, argparse, logging, signal, threading, pickle, subprocess
-import pwd, grp, pkg_resources
+import pwd, grp
 from aadict import aadict
 
+from . import framework
 from .util import SvnpublishLogFormatter
 from .i18n import _
 
@@ -216,7 +217,7 @@ def main(args=None):
   options = cli.parse_args(args)
 
   if options.version:
-    print pkg_resources.require('svnpublish')[0].version
+    print framework.version
     return 0
 
   # configure the logging
@@ -238,7 +239,8 @@ def main(args=None):
     logger.setLevel(0)
     return initServiceDir(options)
 
-  log.info('svnpublishd initializing (pid=%d, uid=%d)', os.getpid(), os.getuid())
+  log.info('svnpublishd v%s initializing (pid=%d, uid=%d)',
+           framework.version, os.getpid(), os.getuid())
   daemon = Daemon(options.svcdir, period=options.period)
   registerSignalHandlers(daemon)
   daemon.start()
