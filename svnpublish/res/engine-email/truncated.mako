@@ -17,6 +17,7 @@ from svnpublish import framework
    email:subject="content"
    >[SVN|${params.label.upper()}] r${revinfo.revision} by ${revinfo.author} - ${revinfo.summary}</title>
   <base href="${params.reposUrl}"/>
+  <meta name="generator" content="svnpublish/v${framework.version}"/>
   % if style:
    <style type="text/css">${style}</style>
   % endif
