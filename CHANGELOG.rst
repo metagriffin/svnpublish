@@ -3,8 +3,16 @@ ChangeLog
 =========
 
 
-2.0.8
-=====
+v2.0.9
+======
+
+* Added more logging and preambles
+* Added version fingerprinting to outbound emails
+* Converted to GPLv3+
+
+
+v2.0.8
+======
 
 * Added "--init-service" option to svnpublishd
 * Cleaned up default options documentation
@@ -13,21 +21,21 @@ ChangeLog
 * Fixed export/fingerprint "path" option defaulting bug
 
 
-2.0.5
-=====
+v2.0.5
+======
 
 * Added asynchronous operation mode (via 'svnpublishd' daemon)
 
 
-2.0.3
-=====
+v2.0.3
+======
 
 * Added outbound GPG email encryption support
 * Corrected packaging (added missing "res" and "test" files)
 
 
-2.0.0
-=====
+v2.0.0
+======
 
 * Ported to GitHub
 * Converted to use genemail_ and TemplateAlchemy_
