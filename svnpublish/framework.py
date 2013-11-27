@@ -34,7 +34,7 @@ following attributes, expressed here as an example YAML file::
 # TODO: the exception handling in the Framework class is a bit... uh...
 #       horrific. refactor!
 
-import sys, os, logging, traceback, operator, yaml, re
+import sys, os, logging, traceback, operator, yaml, re, asset
 import pkg_resources, setuptools, setuptools.package_index
 import templatealchemy as ta
 from aadict import aadict
@@ -47,7 +47,7 @@ from .util import asList, str2sym, autoresolve, flatten
 #------------------------------------------------------------------------------
 
 defaultOptions = util.getResourceString('options.yaml')
-version = pkg_resources.get_distribution('svnpublish').version
+version = asset.version('svnpublish')
 
 #------------------------------------------------------------------------------
 class SourceRegistry(object):
