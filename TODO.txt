@@ -1,3 +1,7 @@
+* add colorization of rss & email diff section.
+    see github example:
+      https://github.com/cadithealth/pyramid_describe/compare/v0.1.27...master
+
 * clean up the ridiculous *MEGA* cascading of options (eg. export's
   options spilling into the fixate's options)
 
