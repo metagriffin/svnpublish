@@ -48,7 +48,7 @@ dependencies = [
   'lesscpy              >= 0.9j',
   'aadict               >= 0.2.0',
   'globre               >= 0.0.5',
-  'asset                >= 0.0.4',
+  'asset                >= 0.0.5',
   ]
 
 extras_dependencies = {
