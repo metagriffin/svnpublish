@@ -3,6 +3,12 @@ ChangeLog
 =========
 
 
+v2.0.10
+=======
+
+* Added HTML diff colorization support to email engine
+
+
 v2.0.9
 ======
 
