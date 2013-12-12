@@ -1,6 +1,7 @@
-* add colorization of rss & email diff section.
-    see github example:
-      https://github.com/cadithealth/pyramid_describe/compare/v0.1.27...master
+* add colorization to rss feed.
+
+* create pure-text email template so that it is a bit cleaner and
+  use svnlook's diff instead of colorized.
 
 * clean up the ridiculous *MEGA* cascading of options (eg. export's
   options spilling into the fixate's options)
