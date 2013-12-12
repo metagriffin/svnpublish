@@ -47,9 +47,9 @@ def parseSvnlookDate(s):
   tss1[8] = 0
   offset = time.mktime(tss0) - time.mktime(tss1)
   # 'offset' is *this* machine's offset at the time of the timestamp
-  t = time.mktime(tss) + offset
-  t += ( s[20] == '-' and 1 or -1 ) * ( int(s[21:23]) * 3600 + int(s[23:25]) * 60 )
-  return t
+  ret = time.mktime(tss) + offset
+  ret += ( s[20] == '-' and 1 or -1 ) * ( int(s[21:23]) * 3600 + int(s[23:25]) * 60 )
+  return ret
 
 #------------------------------------------------------------------------------
 def lines2diffset(lines):
@@ -70,7 +70,7 @@ def lines2diffset(lines):
 def parseSvnlookDiff(diff):
   # expected format of an svnlook diff:
   #   content changes:
-  #     'Deleted|Added|Modfied: path
+  #     'Deleted|Added|Modfied|Copied: path
   #     =*67
   #     content
   #     <blank>
