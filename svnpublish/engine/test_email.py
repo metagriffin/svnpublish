@@ -102,7 +102,7 @@ Content-Transfer-Encoding: 7bit
 
 testName
 
-**revision 3** by **svnuser** on **2011-04-29T02:57:23Z**
+revision **3** by **svnuser** on **2011-04-29T02:57:23Z**
 
 Log Message
 
@@ -167,7 +167,7 @@ Content-Transfer-Encoding: 7bit
             <td class="lr" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;background: #666;color: #fff;font-variant: small-caps;width: 10px" />
             <td class="il" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px;background: #ddd" />
             <td class="info" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;background: #ddd">
-             <b>revision 3</b>
+             <span style="color: #333">revision</span> <b>3</b>
              <span style="color: #333">by</span> <b>svnuser</b>
              <span style="color: #333">on</span> <b>2011-04-29T02:57:23Z</b>
             </td>
@@ -214,7 +214,7 @@ Content-Transfer-Encoding: 7bit
      </tr>
      <tr class="body">
       <td style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;border-top: 1px solid black;border-bottom: 1px solid black;background: #ddd;padding-top: 0.5em;padding-bottom: 0.4em">
-       <table border="0" cellpadding="0" cellspacing="0" class="inner">
+       <table border="0" cellpadding="0" cellspacing="0" class="inner" style="width: 100%">
         <tr class="t">
          <td class="l" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px" />
          <td class="c" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif" />
@@ -260,7 +260,7 @@ Content-Transfer-Encoding: 7bit
      </tr>
      <tr class="body">
       <td style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;border-top: 1px solid black;border-bottom: 1px solid black;background: #ddd;padding-top: 0.5em;padding-bottom: 0.4em">
-       <table border="0" cellpadding="0" cellspacing="0" class="inner">
+       <table border="0" cellpadding="0" cellspacing="0" class="inner" style="width: 100%">
         <tr class="t">
          <td class="l" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px" />
          <td class="c" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif" />
@@ -318,7 +318,7 @@ Content-Transfer-Encoding: 7bit
      </tr>
      <tr class="body">
       <td style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;border-top: 1px solid black;border-bottom: 1px solid black;background: #ddd;padding-top: 0.5em;padding-bottom: 0.4em">
-       <table border="0" cellpadding="0" cellspacing="0" class="inner">
+       <table border="0" cellpadding="0" cellspacing="0" class="inner" style="width: 100%">
         <tr class="t">
          <td class="l" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px" />
          <td class="c" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif" />
@@ -327,15 +327,60 @@ Content-Transfer-Encoding: 7bit
         <tr class="c">
          <td class="l" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px" />
          <td class="c" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif">
-          <pre style="font-family: &quot;Lucida Console&quot;, Consolas, &quot;Andale Mono&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, Monaco, &quot;Courier New&quot;, Courier, monospace;margin: 0;border: 0;padding: 0">Modified: content/textfile.txt
-===================================================================
---- content/textfile.txt	2011-04-29 02:40:55 UTC (rev 2)
-+++ content/textfile.txt	2011-04-29 02:57:23 UTC (rev 3)
-@@ -1 +1 @@
--this is a sample textfile.txt.
-+this is a sample textfile.txt with changes.
-
-</pre>
+          <div class="file-diff">
+            <table border="0" cellpadding="0" cellspacing="0" class="file-diff-entry" style="" width="100%">
+              <thead>
+                <tr>
+                  <th colspan="3" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 10px 0 5px 0">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                      <tr>
+                        <td class="name" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;font-weight: bold">Modified: content/textfile.txt</td>
+                        <td align="right" class="sigs" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;color: #666">
+                          <span class="pre" style="padding: 0 2px;background-color: #fdd">2011-04-29 02:40:55 UTC (rev 2)</span>
+                      to <span class="post" style="padding: 0 2px;background-color: #dfd">2011-04-29 02:57:23 UTC (rev 3)</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </th>
+                </tr>
+              </thead>
+              <tbody style="background: #fff">
+                <tr class="file-diff-line line-location" style="background-color: #f8f8ff">
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-top: 1px solid #aaa;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;border-left: 1px solid #aaa;color: rgba(0, 0, 0, 0.3)">
+                    <span class="line-num-content">...</span>
+                  </td>
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-top: 1px solid #aaa;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;color: rgba(0, 0, 0, 0.3)">
+                    <span class="line-num-content">...</span>
+                  </td>
+                  <td class="diff-line-code" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-top: 1px solid #aaa;border-right: 1px solid #aaa">
+                    <pre class="diff-line-pre" style="font-family: &quot;Lucida Console&quot;, Consolas, &quot;Andale Mono&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, Monaco, &quot;Courier New&quot;, Courier, monospace;margin: 0;border: 0;padding: 0;color: #999">@@ -1 +1 @@</pre>
+                  </td>
+                </tr>
+                <tr class="file-diff-line line-deleted" style="background-color: #fdd">
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;border-left: 1px solid #aaa;color: rgba(0, 0, 0, 0.3);background-color: #f7c8c8;border-right-color: #e9aeae">
+                    <span class="line-num-content">1</span>
+                  </td>
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;color: rgba(0, 0, 0, 0.3);background-color: #f7c8c8;border-right-color: #e9aeae">
+                    <span class="line-num-content"/>
+                  </td>
+                  <td class="diff-line-code" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-right: 1px solid #aaa">
+                    <pre class="diff-line-pre" style="font-family: &quot;Lucida Console&quot;, Consolas, &quot;Andale Mono&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, Monaco, &quot;Courier New&quot;, Courier, monospace;margin: 0;border: 0;padding: 0;color: #333">-this is a sample textfile.txt.</pre>
+                  </td>
+                </tr>
+                <tr class="file-diff-line line-added" style="background-color: #dfd">
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-bottom: 1px solid #aaa;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;border-left: 1px solid #aaa;color: rgba(0, 0, 0, 0.3);background-color: #ceffce;border-right-color: #b4e2b4">
+                    <span class="line-num-content"/>
+                  </td>
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-bottom: 1px solid #aaa;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;color: rgba(0, 0, 0, 0.3);background-color: #ceffce;border-right-color: #b4e2b4">
+                    <span class="line-num-content">1</span>
+                  </td>
+                  <td class="diff-line-code" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-bottom: 1px solid #aaa;border-right: 1px solid #aaa">
+                    <pre class="diff-line-pre" style="font-family: &quot;Lucida Console&quot;, Consolas, &quot;Andale Mono&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, Monaco, &quot;Courier New&quot;, Courier, monospace;margin: 0;border: 0;padding: 0;color: #333">+this is a sample textfile.txt<em style="font-style: normal;background-color: #afa;color: #000"> with changes</em>.</pre>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
          </td>
          <td class="r" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px" />
         </tr>
@@ -403,7 +448,7 @@ Content-Transfer-Encoding: 7bit
 
 testName
 
-**revision 3** by **svnuser** on **2011-04-29T02:57:23Z**
+revision **3** by **svnuser** on **2011-04-29T02:57:23Z**
 
 Log Message
 
@@ -468,7 +513,7 @@ Content-Transfer-Encoding: 7bit
             <td class="lr" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;font-variant: small-caps;width: 10px;background: #042d5a;color: #f8991c"/>
             <td class="il" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px;background: #ddd"/>
             <td class="info" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;background: #ddd">
-             <b>revision 3</b>
+             <span style="color: #333">revision</span> <b>3</b>
              <span style="color: #333">by</span> <b>svnuser</b>
              <span style="color: #333">on</span> <b>2011-04-29T02:57:23Z</b>
             </td>
@@ -517,7 +562,7 @@ Content-Transfer-Encoding: 7bit
      </tr>
      <tr class="body">
       <td style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;border-top: 1px solid black;border-bottom: 1px solid black;background: #ddd;padding-top: 0.5em;padding-bottom: 0.4em">
-       <table class="inner" cellpadding="0" cellspacing="0" border="0">
+       <table class="inner" cellpadding="0" cellspacing="0" border="0" style="width: 100%">
         <tr class="t">
          <td class="l" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px"/>
          <td class="c" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif"/>
@@ -565,7 +610,7 @@ Content-Transfer-Encoding: 7bit
      </tr>
      <tr class="body">
       <td style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;border-top: 1px solid black;border-bottom: 1px solid black;background: #ddd;padding-top: 0.5em;padding-bottom: 0.4em">
-       <table class="inner" cellpadding="0" cellspacing="0" border="0">
+       <table class="inner" cellpadding="0" cellspacing="0" border="0" style="width: 100%">
         <tr class="t">
          <td class="l" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px"/>
          <td class="c" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif"/>
@@ -627,7 +672,7 @@ Content-Transfer-Encoding: 7bit
      </tr>
      <tr class="body">
       <td style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;border-top: 1px solid black;border-bottom: 1px solid black;background: #ddd;padding-top: 0.5em;padding-bottom: 0.4em">
-       <table class="inner" cellpadding="0" cellspacing="0" border="0">
+       <table class="inner" cellpadding="0" cellspacing="0" border="0" style="width: 100%">
         <tr class="t">
          <td class="l" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px"/>
          <td class="c" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif"/>
@@ -636,15 +681,60 @@ Content-Transfer-Encoding: 7bit
         <tr class="c">
          <td class="l" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px"/>
          <td class="c" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif">
-          <pre style="font-family: &quot;Lucida Console&quot;, Consolas, &quot;Andale Mono&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, Monaco, &quot;Courier New&quot;, Courier, monospace;margin: 0;border: 0;padding: 0">Modified: content/textfile.txt
-===================================================================
---- content/textfile.txt	2011-04-29 02:40:55 UTC (rev 2)
-+++ content/textfile.txt	2011-04-29 02:57:23 UTC (rev 3)
-@@ -1 +1 @@
--this is a sample textfile.txt.
-+this is a sample textfile.txt with changes.
-
-</pre>
+          <div class="file-diff">
+            <table border="0" cellpadding="0" cellspacing="0" class="file-diff-entry" style="" width="100%">
+              <thead>
+                <tr>
+                  <th colspan="3" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 10px 0 5px 0">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                      <tr>
+                        <td class="name" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;font-weight: bold">Modified: content/textfile.txt</td>
+                        <td align="right" class="sigs" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;color: #666">
+                          <span class="pre" style="padding: 0 2px;background-color: #fdd">2011-04-29 02:40:55 UTC (rev 2)</span>
+                      to <span class="post" style="padding: 0 2px;background-color: #dfd">2011-04-29 02:57:23 UTC (rev 3)</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </th>
+                </tr>
+              </thead>
+              <tbody style="background: #fff">
+                <tr class="file-diff-line line-location" style="background-color: #f8f8ff">
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-top: 1px solid #aaa;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;border-left: 1px solid #aaa;color: rgba(0, 0, 0, 0.3)">
+                    <span class="line-num-content">...</span>
+                  </td>
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-top: 1px solid #aaa;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;color: rgba(0, 0, 0, 0.3)">
+                    <span class="line-num-content">...</span>
+                  </td>
+                  <td class="diff-line-code" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-top: 1px solid #aaa;border-right: 1px solid #aaa">
+                    <pre class="diff-line-pre" style="font-family: &quot;Lucida Console&quot;, Consolas, &quot;Andale Mono&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, Monaco, &quot;Courier New&quot;, Courier, monospace;margin: 0;border: 0;padding: 0;color: #999">@@ -1 +1 @@</pre>
+                  </td>
+                </tr>
+                <tr class="file-diff-line line-deleted" style="background-color: #fdd">
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;border-left: 1px solid #aaa;color: rgba(0, 0, 0, 0.3);background-color: #f7c8c8;border-right-color: #e9aeae">
+                    <span class="line-num-content">1</span>
+                  </td>
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;color: rgba(0, 0, 0, 0.3);background-color: #f7c8c8;border-right-color: #e9aeae">
+                    <span class="line-num-content"/>
+                  </td>
+                  <td class="diff-line-code" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-right: 1px solid #aaa">
+                    <pre class="diff-line-pre" style="font-family: &quot;Lucida Console&quot;, Consolas, &quot;Andale Mono&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, Monaco, &quot;Courier New&quot;, Courier, monospace;margin: 0;border: 0;padding: 0;color: #333">-this is a sample textfile.txt.</pre>
+                  </td>
+                </tr>
+                <tr class="file-diff-line line-added" style="background-color: #dfd">
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-bottom: 1px solid #aaa;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;border-left: 1px solid #aaa;color: rgba(0, 0, 0, 0.3);background-color: #ceffce;border-right-color: #b4e2b4">
+                    <span class="line-num-content"/>
+                  </td>
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-bottom: 1px solid #aaa;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;color: rgba(0, 0, 0, 0.3);background-color: #ceffce;border-right-color: #b4e2b4">
+                    <span class="line-num-content">1</span>
+                  </td>
+                  <td class="diff-line-code" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-bottom: 1px solid #aaa;border-right: 1px solid #aaa">
+                    <pre class="diff-line-pre" style="font-family: &quot;Lucida Console&quot;, Consolas, &quot;Andale Mono&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, Monaco, &quot;Courier New&quot;, Courier, monospace;margin: 0;border: 0;padding: 0;color: #333">+this is a sample textfile.txt<em style="font-style: normal;background-color: #afa;color: #000"> with changes</em>.</pre>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
          </td>
          <td class="r" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px"/>
         </tr>
@@ -717,7 +807,7 @@ Content-Transfer-Encoding: 7bit
 
 testName
 
-**revision 3** by **svnuser** on **2011-04-29T02:57:23Z**
+revision **3** by **svnuser** on **2011-04-29T02:57:23Z**
 
 Log Message
 
@@ -782,7 +872,7 @@ Content-Transfer-Encoding: 7bit
             <td class="lr" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;font-variant: small-caps;width: 10px;background: #042d5a;color: #f8991c"/>
             <td class="il" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px;background: #ddd"/>
             <td class="info" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;background: #ddd">
-             <b>revision 3</b>
+             <span style="color: #333">revision</span> <b>3</b>
              <span style="color: #333">by</span> <b>svnuser</b>
              <span style="color: #333">on</span> <b>2011-04-29T02:57:23Z</b>
             </td>
@@ -831,7 +921,7 @@ Content-Transfer-Encoding: 7bit
      </tr>
      <tr class="body">
       <td style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;border-top: 1px solid black;border-bottom: 1px solid black;background: #ddd;padding-top: 0.5em;padding-bottom: 0.4em">
-       <table class="inner" cellpadding="0" cellspacing="0" border="0">
+       <table class="inner" cellpadding="0" cellspacing="0" border="0" style="width: 100%">
         <tr class="t">
          <td class="l" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px"/>
          <td class="c" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif"/>
@@ -879,7 +969,7 @@ Content-Transfer-Encoding: 7bit
      </tr>
      <tr class="body">
       <td style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;border-top: 1px solid black;border-bottom: 1px solid black;background: #ddd;padding-top: 0.5em;padding-bottom: 0.4em">
-       <table class="inner" cellpadding="0" cellspacing="0" border="0">
+       <table class="inner" cellpadding="0" cellspacing="0" border="0" style="width: 100%">
         <tr class="t">
          <td class="l" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px"/>
          <td class="c" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif"/>
@@ -941,7 +1031,7 @@ Content-Transfer-Encoding: 7bit
      </tr>
      <tr class="body">
       <td style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;border-top: 1px solid black;border-bottom: 1px solid black;background: #ddd;padding-top: 0.5em;padding-bottom: 0.4em">
-       <table class="inner" cellpadding="0" cellspacing="0" border="0">
+       <table class="inner" cellpadding="0" cellspacing="0" border="0" style="width: 100%">
         <tr class="t">
          <td class="l" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px"/>
          <td class="c" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif"/>
@@ -950,15 +1040,60 @@ Content-Transfer-Encoding: 7bit
         <tr class="c">
          <td class="l" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px"/>
          <td class="c" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif">
-          <pre style="font-family: &quot;Lucida Console&quot;, Consolas, &quot;Andale Mono&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, Monaco, &quot;Courier New&quot;, Courier, monospace;margin: 0;border: 0;padding: 0">Modified: content/textfile.txt
-===================================================================
---- content/textfile.txt	2011-04-29 02:40:55 UTC (rev 2)
-+++ content/textfile.txt	2011-04-29 02:57:23 UTC (rev 3)
-@@ -1 +1 @@
--this is a sample textfile.txt.
-+this is a sample textfile.txt with changes.
-
-</pre>
+          <div class="file-diff">
+            <table border="0" cellpadding="0" cellspacing="0" class="file-diff-entry" style="" width="100%">
+              <thead>
+                <tr>
+                  <th colspan="3" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 10px 0 5px 0">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                      <tr>
+                        <td class="name" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;font-weight: bold">Modified: content/textfile.txt</td>
+                        <td align="right" class="sigs" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;color: #666">
+                          <span class="pre" style="padding: 0 2px;background-color: #fdd">2011-04-29 02:40:55 UTC (rev 2)</span>
+                      to <span class="post" style="padding: 0 2px;background-color: #dfd">2011-04-29 02:57:23 UTC (rev 3)</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </th>
+                </tr>
+              </thead>
+              <tbody style="background: #fff">
+                <tr class="file-diff-line line-location" style="background-color: #f8f8ff">
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-top: 1px solid #aaa;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;border-left: 1px solid #aaa;color: rgba(0, 0, 0, 0.3)">
+                    <span class="line-num-content">...</span>
+                  </td>
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-top: 1px solid #aaa;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;color: rgba(0, 0, 0, 0.3)">
+                    <span class="line-num-content">...</span>
+                  </td>
+                  <td class="diff-line-code" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-top: 1px solid #aaa;border-right: 1px solid #aaa">
+                    <pre class="diff-line-pre" style="font-family: &quot;Lucida Console&quot;, Consolas, &quot;Andale Mono&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, Monaco, &quot;Courier New&quot;, Courier, monospace;margin: 0;border: 0;padding: 0;color: #999">@@ -1 +1 @@</pre>
+                  </td>
+                </tr>
+                <tr class="file-diff-line line-deleted" style="background-color: #fdd">
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;border-left: 1px solid #aaa;color: rgba(0, 0, 0, 0.3);background-color: #f7c8c8;border-right-color: #e9aeae">
+                    <span class="line-num-content">1</span>
+                  </td>
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;color: rgba(0, 0, 0, 0.3);background-color: #f7c8c8;border-right-color: #e9aeae">
+                    <span class="line-num-content"/>
+                  </td>
+                  <td class="diff-line-code" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-right: 1px solid #aaa">
+                    <pre class="diff-line-pre" style="font-family: &quot;Lucida Console&quot;, Consolas, &quot;Andale Mono&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, Monaco, &quot;Courier New&quot;, Courier, monospace;margin: 0;border: 0;padding: 0;color: #333">-this is a sample textfile.txt.</pre>
+                  </td>
+                </tr>
+                <tr class="file-diff-line line-added" style="background-color: #dfd">
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-bottom: 1px solid #aaa;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;border-left: 1px solid #aaa;color: rgba(0, 0, 0, 0.3);background-color: #ceffce;border-right-color: #b4e2b4">
+                    <span class="line-num-content"/>
+                  </td>
+                  <td class="diff-line-num" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-bottom: 1px solid #aaa;width: 1%;border-right: 1px solid #ccc;font-family: Consolas, &quot;Liberation Mono&quot;, Courier, monospace;text-align: right;vertical-align: top;color: rgba(0, 0, 0, 0.3);background-color: #ceffce;border-right-color: #b4e2b4">
+                    <span class="line-num-content">1</span>
+                  </td>
+                  <td class="diff-line-code" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;padding: 0 8px;line-height: 15pt;border-bottom: 1px solid #aaa;border-right: 1px solid #aaa">
+                    <pre class="diff-line-pre" style="font-family: &quot;Lucida Console&quot;, Consolas, &quot;Andale Mono&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, Monaco, &quot;Courier New&quot;, Courier, monospace;margin: 0;border: 0;padding: 0;color: #333">+this is a sample textfile.txt<em style="font-style: normal;background-color: #afa;color: #000"> with changes</em>.</pre>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
          </td>
          <td class="r" style="font: 10pt &quot;Trebuchet MS&quot;, lucida, geneva, verdana, sans-serif;width: 10px"/>
         </tr>

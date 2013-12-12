@@ -26,6 +26,7 @@ table.section table.inner td.l,
 table.section table.inner td.r {width:10px;}
 table.section > tr.head table.inner td {font-weight:bold;font-variant:small-caps;}
 table.section > tr.body > td {border-top:1px solid black;border-bottom:1px solid black;background:#ddd;padding-top:0.5em;padding-bottom:0.4em;}
+table.section > tr.body > td > table.inner {width: 100%}
 pre {margin:0px;border:0px;padding:0px;}
 pre.snip {font-style:italic;color:#f00;}
 pre.logmsg {max-height:15.7em;overflow:hidden;}
@@ -33,3 +34,117 @@ pre.logmsg.none {font-style:italic;}
 table.section.changes table.inner table.hasroot {padding-top:0.5em;}
 table.section.changes table.inner table tr.change th {font-weight:bold;}
 .credits {margin-top:1em;color:#999;font-size:80%;}
+
+table.file-diff-entry {
+}
+
+table.file-diff-entry > thead th {
+  padding: 10px 0 5px 0;
+}
+
+table.file-diff-entry > thead th .name {
+  font-weight: bold;
+}
+
+table.file-diff-entry > thead th .sigs {
+  color: #666;
+}
+
+table.file-diff-entry > thead th .sigs span {
+  padding: 0 2px;
+}
+
+table.file-diff-entry > thead th .pre {
+  background-color: #ffdddd;
+}
+
+table.file-diff-entry > thead th .post {
+  background-color: #ddffdd;
+}
+
+table.file-diff-entry > tbody {
+  background: #fff;
+}
+
+table.file-diff-entry > tbody td {
+  padding: 0 8px;
+  line-height: 15pt;
+}
+
+table.file-diff-entry > tbody tr:first-child td {
+  border-top: 1px solid #aaa;
+}
+
+table.file-diff-entry > tbody tr:last-child td {
+  border-bottom: 1px solid #aaa;
+}
+
+table.file-diff-entry > tbody td.diff-line-num {
+  width: 1%;
+  border-right: 1px solid #ccc;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  text-align: right;
+  vertical-align: top;
+}
+
+table.file-diff-entry > tbody td:first-child {
+  border-left: 1px solid #aaa;
+}
+
+table.file-diff-entry > tbody td:last-child {
+  border-right: 1px solid #aaa;
+}
+
+table.file-diff-entry .diff-line-num {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+table.file-diff-entry .diff-line-pre {
+  color: #333;
+}
+
+table.file-diff-entry .line-added {
+  background-color: #ddffdd;
+}
+
+table.file-diff-entry .line-added .diff-line-num {
+  background-color: #ceffce;
+  border-right-color: #b4e2b4;
+}
+
+table.file-diff-entry .line-added .diff-line-code em {
+  font-style: normal;
+  background-color: #aaffaa;
+  color: #000;
+}
+
+table.file-diff-entry .line-deleted {
+  background-color: #ffdddd;
+}
+
+table.file-diff-entry .line-deleted .diff-line-num {
+  background-color: #f7c8c8;
+  border-right-color: #e9aeae;
+}
+
+table.file-diff-entry .line-deleted .diff-line-code em {
+  font-style: normal;
+  background-color: #ffaaaa;
+  color: #000;
+}
+
+table.file-diff-entry .line-note {
+  background-color: #f8eec7;
+}
+
+table.file-diff-entry .line-location {
+  background-color: #f8f8ff;
+}
+
+table.file-diff-entry .line-location .diff-line-pre {
+  color: #999;
+}
+
+table.file-diff-entry .line-same .diff-line-pre {
+  color: #666;
+}
