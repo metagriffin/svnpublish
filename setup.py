@@ -43,12 +43,13 @@ dependencies = [
   'distribute           >= 0.6.24',
   'PyYAML               >= 3.10',
   'six                  >= 1.4.1',
-  #'TemplateAlchemy      >= 0.1.20',
   'genemail             >= 0.1.10',
   'lesscpy              >= 0.9j',
-  'aadict               >= 0.2.0',
+  'aadict               >= 0.2.1',
   'globre               >= 0.0.5',
   'asset                >= 0.0.5',
+  'morph                >= 0.1.1',
+  'parsedifflib         >= 0.1.0',
   ]
 
 extras_dependencies = {
