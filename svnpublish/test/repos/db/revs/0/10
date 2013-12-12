@@ -1,0 +1,121 @@
+DELTA
+SVNENDREP
+DELTA
+SVNENDREP
+DELTA
+SVNENDREP
+PLAIN
+K 14
+test:property1
+V 44
+one line
+
+(blank line above and below too)
+
+
+K 14
+test:property2
+V 22
+line without a newline
+END
+ENDREP
+id: 2-10.0.r10/186
+type: file
+count: 0
+text: 10 0 4 0 d41d8cd98f00b204e9800998ecf8427e da39a3ee5e6b4b0d3255bfef95601890afd80709 9-b/_6
+props: 10 51 122 0 2e4a8bb574d99434f677bd18a2293e1a
+cpath: /property/file1.txt
+copyroot: 0 /
+
+PLAIN
+K 14
+test:property1
+V 6
+value1
+K 14
+test:property2
+V 6
+value2
+END
+ENDREP
+id: 4-10.0.r10/494
+type: file
+count: 0
+text: 10 17 4 0 d41d8cd98f00b204e9800998ecf8427e da39a3ee5e6b4b0d3255bfef95601890afd80709 9-b/_7
+props: 10 415 66 0 4287e6db5d6112e3f3e8d02bb612c0bd
+cpath: /property/file2.txt
+copyroot: 0 /
+
+id: 5-10.0.r10/724
+type: file
+count: 0
+text: 10 34 4 0 d41d8cd98f00b204e9800998ecf8427e da39a3ee5e6b4b0d3255bfef95601890afd80709 9-b/_8
+cpath: /property/file3.txt
+copyroot: 0 /
+
+PLAIN
+K 9
+file1.txt
+V 19
+file 2-10.0.r10/186
+K 9
+file2.txt
+V 19
+file 4-10.0.r10/494
+K 9
+file3.txt
+V 19
+file 5-10.0.r10/724
+END
+ENDREP
+PLAIN
+K 10
+svn:ignore
+V 20
+file*.txt~
+#*
+.tmp*
+
+END
+ENDREP
+id: 0-10.0.r10/1095
+type: dir
+count: 0
+text: 10 902 121 121 8ff3fc207dad15a4a0780897401a7906
+props: 10 1036 46 0 7bcc37987fe3b8af79cbeb6828062f9d
+cpath: /property
+copyroot: 0 /
+
+PLAIN
+K 3
+app
+V 16
+dir 0-6.0.r6/385
+K 7
+content
+V 18
+dir 0-1.0-2.r9/618
+K 8
+property
+V 19
+dir 0-10.0.r10/1095
+END
+ENDREP
+id: 0.0.r10/1394
+type: dir
+pred: 0.0.r9/849
+count: 10
+text: 10 1273 108 108 708bef53dca74c8cbd0dd64954e1ac07
+cpath: /
+copyroot: 0 /
+
+_0.0.t9-b add-dir false true /property
+
+_5.0.t9-b add-file true false /property/file3.txt
+
+_2.0.t9-b add-file true true /property/file1.txt
+
+_4.0.t9-b add-file true true /property/file2.txt
+
+
+1394 1527

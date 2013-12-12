@@ -1,0 +1,67 @@
+PLAIN
+K 13
+svn:eol-style
+V 2
+LF
+K 12
+svn:keywords
+V 11
+Id Revision
+K 17
+svnpublish:ignore
+V 6
+*.exe
+
+END
+ENDREP
+id: 7-1.0-2.r7/112
+type: file
+pred: 7-1.0-2.r4/78
+count: 3
+text: 3 0 56 44 e636071c0d16d97b4f499d4b3734435b 30a97a791798750ba3c9815e1253e70678b9b09b 2-2/_2
+props: 7 0 99 0 d84d6c91b580da64f581d01f96b76f50
+cpath: /content/textfile.txt
+copyroot: 2 /content
+
+PLAIN
+K 9
+directory
+V 18
+dir 2-1.0-2.r5/759
+K 12
+textfile.txt
+V 19
+file 7-1.0-2.r7/112
+END
+ENDREP
+id: 0-1.0-2.r7/466
+type: dir
+pred: 0-1.0-2.r5/1012
+count: 5
+text: 7 368 85 85 a1c85fbfc18125050768426ea14a21f8
+cpath: /content
+copyroot: 2 /content
+
+PLAIN
+K 3
+app
+V 16
+dir 0-6.0.r6/385
+K 7
+content
+V 18
+dir 0-1.0-2.r7/466
+END
+ENDREP
+id: 0.0.r7/698
+type: dir
+pred: 0.0.r6/583
+count: 7
+text: 7 615 70 70 8ccf3c35025c23272c066066a4348a8e
+cpath: /
+copyroot: 0 /
+
+7-1.0-2.t6-8 modify-file false true /content/textfile.txt
+
+
+698 824
