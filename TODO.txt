@@ -2,6 +2,10 @@
 
 * create pure-text email template so that it is a bit cleaner and
   use svnlook's diff instead of colorized.
+  ==> note that as a first-pass, it may not need to be the whole
+      separate text template. genemail should be improved to
+      support rendering the HTML "in text mode" and then call
+      renderPlain() instead of renderTable()...
 
 * clean up the ridiculous *MEGA* cascading of options (eg. export's
   options spilling into the fixate's options)
