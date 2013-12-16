@@ -41,6 +41,10 @@ test_dependencies = [
 
 dependencies = [
   'distribute           >= 0.6.24',
+
+  # todo: cssutils' 1.0 pip installation is broken -- forcing 0.9.10
+  'cssutils             == 0.9.10',
+
   'PyYAML               >= 3.10',
   'six                  >= 1.4.1',
   'genemail             >= 0.1.11',
