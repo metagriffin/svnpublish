@@ -3,6 +3,14 @@ ChangeLog
 =========
 
 
+v2.0.11
+=======
+
+* Fixed the "pip" installation issues (by removing namespace support
+  and forcing version 0.9.10 of cssutils)
+* Set email "Date" header to commit-date instead of generation-date
+
+
 v2.0.10
 =======
 
