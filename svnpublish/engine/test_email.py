@@ -92,7 +92,7 @@ Content-Type: multipart/alternative; boundary="==MIMEBOUNDARY=z1-alt-2=="
 MIME-Version: 1.0
 To: rcpt@example.com
 From: "svnpublish" <noreply@localhost>
-Date: Fri, 13 Feb 2009 23:31:30 -0000
+Date: Fri, 29 Apr 2011 02:57:23 -0000
 Subject: [SVN|TESTLABEL] r3 by svnuser - simple update with text changes
 
 --==MIMEBOUNDARY=z1-alt-2==
@@ -438,7 +438,7 @@ Content-Type: multipart/alternative; boundary="==MIMEBOUNDARY=z1-alt-2=="
 MIME-Version: 1.0
 To: rcpt@example.com
 From: "svnpublish" <noreply@localhost>
-Date: Fri, 13 Feb 2009 23:31:30 -0000
+Date: Fri, 29 Apr 2011 02:57:23 -0000
 Subject: [SVN|TESTLABEL] r3 by svnuser - simple update with text changes
 
 --==MIMEBOUNDARY=z1-alt-2==
@@ -797,7 +797,7 @@ Content-Type: multipart/alternative; boundary="==MIMEBOUNDARY=z1-alt-2=="
 MIME-Version: 1.0
 To: rcpt@example.com
 From: "svnpublish" <noreply@localhost>
-Date: Fri, 13 Feb 2009 23:31:30 -0000
+Date: Fri, 29 Apr 2011 02:57:23 -0000
 Subject: [SVN|TESTLABEL] r3 by svnuser - simple update with text changes
 
 --==MIMEBOUNDARY=z1-alt-2==

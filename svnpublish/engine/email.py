@@ -19,7 +19,11 @@
 # along with this program. If not, see http://www.gnu.org/licenses/.
 #------------------------------------------------------------------------------
 
+from __future__ import absolute_import
+
 from genemail.util import extractEmails
+import email.utils
+
 from svnpublish.util import autoresolve, asList
 
 #------------------------------------------------------------------------------
@@ -60,6 +64,8 @@ def publish_email(context):
 
   if rcpts and not eml.hasHeader('to'):
     eml.setHeader('to', ', '.join(rcpts))
+
+  eml.setHeader('date', email.utils.formatdate(context.revinfo.date_epoch))
 
   eml['params']  = context
   eml['revinfo'] = context.revinfo
