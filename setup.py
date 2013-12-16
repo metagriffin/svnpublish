@@ -96,7 +96,7 @@ setup(
   keywords              = 'svn subversion publish automation actions deploy test testing',
   packages              = find_packages(),
   platforms             = ['any'],
-  namespace_packages    = ['svnpublish'],
+  # namespace_packages    = ['svnpublish'],
   include_package_data  = True,
   zip_safe              = True,
   install_requires      = dependencies,
