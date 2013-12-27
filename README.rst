@@ -25,7 +25,7 @@ Install:
 
 .. code-block:: bash
 
-  $ easy_install svnpublish
+  $ pip install svnpublish
   $ mkdir -p /etc/svnpublish
   $ svnpublish --init-options > /etc/svnpublish/myrepos.yaml
 
