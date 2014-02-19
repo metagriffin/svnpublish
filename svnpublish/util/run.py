@@ -42,7 +42,7 @@ def run(*cmd, **kwargs):
   else:
     output, errput = p.communicate()
   if p.returncode != 0:
-    raise api.CommandFailed('command "%s" failed: %s' % (' '.join(cmd), errput))
+    raise api.CommandFailed('command %r failed: %s' % (cmd, errput))
   return output
 
 #------------------------------------------------------------------------------
