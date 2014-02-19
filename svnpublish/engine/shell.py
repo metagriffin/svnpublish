@@ -21,6 +21,7 @@
 
 import sys
 from aadict import aadict
+import pipes
 
 from svnpublish.util import ts, evalVars, run, runchk
 
@@ -46,9 +47,13 @@ def fixate_shell(params, srcdir, dstdir):
 
   params.logger.debug('running fixate shell command "%s"', params.command)
 
-  out = run(params.prefix or ['/bin/sh', '-c'],
-            evalVars(params, params.command, shell_eval),
-            env=shell_env)
+  cmd = evalVars(params, params.command, shell_eval)
+  if params.prefix:
+    cmd = '/usr/bin/env {environ} /bin/sh -c {command}'.format(
+      environ = ' '.join(['%s=%s' % (key, pipes.quote(val)) for key, val in shell_env.items()]),
+      command = pipes.quote(cmd))
+
+  out = run(params.prefix or ['/bin/sh', '-c'], cmd, env=shell_env)
 
   if out:
     params.logger.info(out)
@@ -77,9 +82,13 @@ def finalize_shell(params, dstdir):
 
   params.logger.debug('running finalize shell command "%s"', params.command)
 
-  out = run(params.prefix or ['/bin/sh', '-c'],
-            evalVars(params, params.command, shell_eval),
-            env=shell_env)
+  cmd = evalVars(params, params.command, shell_eval)
+  if params.prefix:
+    cmd = '/usr/bin/env {environ} /bin/sh -c {command}'.format(
+      environ = ' '.join(['%s=%s' % (key, pipes.quote(val)) for key, val in shell_env.items()]),
+      command = pipes.quote(cmd))
+
+  out = run(params.prefix or ['/bin/sh', '-c'], cmd, env=shell_env)
 
   if out:
     params.logger.info(out)
