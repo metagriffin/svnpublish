@@ -3,6 +3,12 @@ ChangeLog
 =========
 
 
+v2.12
+=====
+
+* Fixed shell execution when exporting to remote targets
+
+
 v2.0.11
 =======
 
